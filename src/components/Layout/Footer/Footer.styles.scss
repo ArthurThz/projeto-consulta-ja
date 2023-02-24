@@ -1,0 +1,76 @@
+footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 3em 2em;
+
+  background-color: rgba(222, 234, 246, 0.876);
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    padding: 5em 0;
+  }
+
+  .social-media,
+  .about-us,
+  .contact {
+    display: flex;
+    flex-direction: column;
+    height: 10em;
+  }
+
+  .social-media span,
+  .about-us span,
+  .contact span {
+    font-size: 1.2em;
+    font-weight: bold;
+
+    margin-bottom: 1em;
+  }
+
+  .social-media section {
+    display: flex;
+    align-items: center;
+
+    gap: 1.5em;
+  }
+
+  .about-us section,
+  .contact section {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+    gap: 1em;
+  }
+
+  .contact section p {
+    color: rgb(59, 59, 145);
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+  }
+
+  .about-us a,
+  .social-media a {
+    text-decoration: none;
+    color: rgb(59, 59, 145);
+
+    transition: 0.2s ease-out;
+  }
+
+  .about-us a:hover,
+  .social-media a:hover {
+    transform: scale(1.1);
+  }
+
+  .social-media svg {
+    height: 1.5em;
+    width: 1.5em;
+  }
+}
