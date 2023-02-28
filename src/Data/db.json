@@ -9,7 +9,6 @@
       "horario": "9:00",
       "local": "Rua fernando, 204"
     },
-
     {
       "id": 2,
       "paciente": "Arthur",
@@ -29,62 +28,63 @@
       "local": "Rua joao, 244"
     }
   ],
-  "doctor":[
+  "doctor": [
     {
-        "name": "Fernando Caldeira",
-        "endereco": "Rua fernando caldeira, 205, 13 andar",
-        "IdEspecialidade": 1,
-        "Especialidade": " Clinico Geral"
-       
+      "name": "Fernando Caldeira",
+      "endereco": "Rua fernando caldeira, 205, 13 andar",
+      "IdEspecialidade": 1,
+      "Especialidade": " Clinico Geral"
     },
     {
-        "name": "Gabriella Oliveira",
-        "endereco": "Rua Gabriella Oliveira, 210",
-        "IdEspecialidade": 2,
-        "Especialidade": "Alergista"
-        
+      "name": "Gabriella Oliveira",
+      "endereco": "Rua Gabriella Oliveira, 210",
+      "IdEspecialidade": 2,
+      "Especialidade": "Alergista"
     },
     {
-        "name": "João das Neves",
-        "endereco": "Rua João das Neves, 110",
-        "IdEspecialidade": 3,
-        "Especialidade": "Cardiologista"
-       
+      "name": "João das Neves",
+      "endereco": "Rua João das Neves, 110",
+      "IdEspecialidade": 3,
+      "Especialidade": "Cardiologista"
     },
     {
-        "name": "Douglas Ferreira",
-        "endereco": "Rua Douglas Ferreira, 10",
-        "IdEspecialidade": 4,
-        "Especialidade": "Endocrinologista"
-        
+      "name": "Douglas Ferreira",
+      "endereco": "Rua Douglas Ferreira, 10",
+      "IdEspecialidade": 4,
+      "Especialidade": "Endocrinologista"
     },
     {
-        "name": "José Bueno",
-        "endereco": "Rua José Bueno, 100",
-        "IdEspecialidade": 5
-       
+      "name": "José Bueno",
+      "endereco": "Rua José Bueno, 100",
+      "IdEspecialidade": 5
     }
   ],
   "specialty": [
     {
-        "id": 1,
-        "name": "Clinico Geral"
+      "id": 1,
+      "name": "Clinico Geral"
     },
     {
-        "id": 2,
-        "name": "Alergista"
+      "id": 2,
+      "name": "Alergista"
     },
     {
-        "id": 3,
-        "name": "Cardiologista"
+      "id": 3,
+      "name": "Cardiologista"
     },
     {
-        "id": 4,
-        "name": "Endocrinologista"
+      "id": 4,
+      "name": "Endocrinologista"
     },
     {
-        "id": 5,
-        "name": "Fisioterapeuta"
+      "id": 5,
+      "name": "Fisioterapeuta"
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
     }
-]
+  ]
 }

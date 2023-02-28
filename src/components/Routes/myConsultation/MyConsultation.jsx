@@ -7,7 +7,12 @@ const MyConsultation = () => {
 
   useEffect(() => {
     // API que contem a tabela de consultas
-    fetch("http://localhost:5000/consultation")
+    fetch("http://localhost:5000/consultation", {
+      method: "GET",
+      headers: {
+        "Content-type": "Application/JSON",
+      },
+    })
       .then((response) => response.json())
       .then((data) => setConsultation(data))
       .catch((error) => console.log(error));
