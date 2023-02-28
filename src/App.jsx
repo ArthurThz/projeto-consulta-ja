@@ -9,6 +9,7 @@ import MyConsultation from "./components/Routes/myConsultation/MyConsultation";
 import NewConsultation from "./components/Routes/newConsultation/NewConsultation";
 import DoctorCard from "./components/DoctorCard/DoctorCard";
 import Footer from "./components/Layout/Footer/Footer";
+
 const App = () => {
   return (
     <div>

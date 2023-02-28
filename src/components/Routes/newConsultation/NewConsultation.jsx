@@ -1,8 +1,11 @@
 import "./NewConsultation.styles.scss";
-import { useState, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+import { ConsultationContext } from "../../../Context/ConsultationContext";
 const NewConsultation = () => {
   const [Specialty, setSpecialty] = useState([]);
+  const { IdConsultation, setIdConsultation } = useContext(ConsultationContext);
 
   useEffect(() => {
     fetch("http://localhost:5000/specialty", {
@@ -22,7 +25,9 @@ const NewConsultation = () => {
       {Specialty.map((specialty) => {
         return (
           <div key={specialty.id}>
-            <Link to="/doctors">{specialty.name}</Link>
+            <Link to="/doctors" onClick={() => setIdConsultation(specialty.id)}>
+              {specialty.name}
+            </Link>
           </div>
         );
       })}
