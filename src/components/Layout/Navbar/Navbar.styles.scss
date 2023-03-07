@@ -37,8 +37,11 @@ nav {
     justify-content: right;
     align-items: center;
     padding: 1em;
-
-    a {
+    span {
+      cursor: pointer;
+    }
+    .nav-link,
+    span {
       text-decoration: none;
 
       margin: 0 10px;
@@ -55,7 +58,8 @@ nav {
       transition: all 0.3s ease-out;
     }
 
-    a:hover {
+    .nav-link:hover,
+    span:hover {
       transform: scale(1.1);
 
       color: rgb(32, 25, 236);
