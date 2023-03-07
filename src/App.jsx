@@ -9,6 +9,7 @@ import MyConsultation from "./components/Routes/myConsultation/MyConsultation";
 import NewConsultation from "./components/Routes/newConsultation/NewConsultation";
 import DoctorCard from "./components/DoctorCard/DoctorCard";
 import Footer from "./components/Layout/Footer/Footer";
+import SignUp from "./components/Sign-Up/Sign-Up";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/minhasconsultas" element={<MyConsultation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/doctors" element={<DoctorCard />} />
+          <Route path="/cadastro" element={<SignUp />} />
         </Routes>
         <Footer />
       </Router>
