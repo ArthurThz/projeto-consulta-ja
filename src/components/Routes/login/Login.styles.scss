@@ -107,6 +107,9 @@
           color: #fff;
 
           background-color: rgba(55, 55, 233, 0.89);
+          &:disabled {
+            opacity: 0.7;
+          }
         }
 
         .login-social-media {

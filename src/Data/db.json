@@ -1,4 +1,21 @@
 {
+  "users":[
+    {
+      "id":200,
+      "name":"Joao",
+      "password":"1234567"
+    },
+    {
+      "id":201,
+      "name":"Maria",
+      "password":"1234567"
+    },
+    {
+      "id":202,
+      "name":"Pedro",
+      "password":"1234567"
+    }
+  ],
   "consultation": [
     {
       "id": 1,
@@ -29,6 +46,18 @@
     }
   ],
   "doctor": [
+    {
+      "name": "Fernando Caldeira",
+      "endereco": "Rua fernando caldeira, 205, 13 andar",
+      "IdEspecialidade": 1,
+      "Especialidade": " Clinico Geral"
+    },
+    {
+      "name": "Fernando Caldeira",
+      "endereco": "Rua fernando caldeira, 205, 13 andar",
+      "IdEspecialidade": 1,
+      "Especialidade": " Clinico Geral"
+    },
     {
       "name": "Fernando Caldeira",
       "endereco": "Rua fernando caldeira, 205, 13 andar",
@@ -81,7 +110,8 @@
       "name": "Fisioterapeuta"
     },
     {
-      "id": 6
+      "id": 6,
+      "name": "Dermatologia"
     },
     {
       "id": 7

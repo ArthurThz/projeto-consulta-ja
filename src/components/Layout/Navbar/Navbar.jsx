@@ -1,11 +1,12 @@
 import "./Navbar.styles.scss";
 import { Link } from "react-router-dom";
-
+import { useContext } from "react";
 // Icons
 import heatlhIcon from "../../../assets/icon/health.png";
 
+import { userContext } from "../../../Context/UserContext";
 const NavBar = () => {
-  const user = false;
+  const { user, setUser } = useContext(userContext);
   return (
     <nav>
       <div className="nav-left">
@@ -15,13 +16,32 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="nav-right">
-        <Link to="/">Home</Link>
-        <Link to="/novaconsulta">Nova Consulta</Link>
-        <Link to="/minhasconsultas">Minhas Consultas</Link>
-        <Link to="/doctors">Doutor</Link>
-        <div className="user">
-          <Link to="/login">Login</Link>
-        </div>
+        <Link to="/" className="nav-link">
+          Home
+        </Link>
+        {user ? (
+          <Link className="nav-link" to="/novaconsulta">
+            Nova Consulta
+          </Link>
+        ) : (
+          ""
+        )}
+        {user ? (
+          <Link className="nav-link" to="/minhasconsultas">
+            Minhas Consultas
+          </Link>
+        ) : (
+          ""
+        )}
+        {user ? (
+          <span className="nav-link" onClick={() => setUser("")}>
+            Sair
+          </span>
+        ) : (
+          <Link className="nav-link" to="/login">
+            Login
+          </Link>
+        )}
       </div>
     </nav>
   );
