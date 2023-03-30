@@ -1,45 +1,44 @@
 import "./Login.styles.scss";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 
-// Icons
-import { FaFacebook, FaInstagram, FaGoogle } from "react-icons/fa";
-
+import { api } from "../../../utils/api";
 // Context
 import { userContext } from "../../../Context/UserContext";
 
-import { loginCall } from "../../../utils/login.utils";
-
 const Login = () => {
-  const { user, setUser, userData } = useContext(userContext);
+  // Hooks
+  const navigate = useNavigate();
+  const { setUser } = useContext(userContext);
 
-  // States
-  const [Users, setUsers] = useState("");
-  const [Password, setPassword] = useState("");
+  //State
+  const [userData, setUserData] = useState({});
 
   // event handlers
-  const userEventHandler = (event) => {
-    let value = event.target.value;
-    setUsers(value);
+  const handleOnChangeInput = (event) => {
+    const { name, value } = event.target;
+    setUserData({ ...userData, [name]: value });
   };
 
-  const passwordEventHandler = (event) => {
-    let value = event.target.value;
-    setPassword(value);
-  };
-
-  const handleOnSubmit = (event) => {
+  const handleOnSubmit = async (event) => {
     event.preventDefault();
+
+    try {
+      const { data } = await api.get(
+        `users?name=${userData.userName}&password=${userData.password}`
+      );
+      if (data.length === 1) {
+        setUser(userData.userName);
+        navigate("/");
+      } else {
+        alert("Usuário ou senha inválida");
+      }
+    } catch {
+      alert("Houve um erro, tente novamente");
+    }
   };
 
-  const fetchLogin = () => {
-    loginCall(Users, Password)
-      .then(() => {
-        setUser(Users);
-      })
-      .catch((error) => console.log(error.message));
-  };
   return (
     <div className="login-container">
       <div className="left-side"></div>
@@ -48,22 +47,22 @@ const Login = () => {
         <div className="login">
           <form onSubmit={handleOnSubmit}>
             <div className="control-input">
-              <label htmlFor="userName">CPF</label>
+              <label htmlFor="userName">Nome</label>
               <input
                 type="text"
                 name="userName"
-                placeholder="Digite o seu CPF"
-                onChange={userEventHandler}
+                placeholder="Digite o seu nome"
+                onChange={handleOnChangeInput}
               />
             </div>
 
             <div className="control-input">
-              <label htmlFor="userPassword">Senha</label>
+              <label htmlFor="password">Senha</label>
               <input
                 type="password"
-                name="userPassword"
+                name="password"
                 placeholder="Digite a sua senha"
-                onChange={passwordEventHandler}
+                onChange={handleOnChangeInput}
               />
             </div>
 
@@ -78,13 +77,7 @@ const Login = () => {
               </section>
             </div>
 
-            <input
-              className="button"
-              type="submit"
-              value="Entrar"
-              onClick={fetchLogin}
-              disabled={Users === "" || Password.length < 6}
-            />
+            <input className="button" type="submit" value="Entrar" />
 
             <div className="sign-up">
               <span>
