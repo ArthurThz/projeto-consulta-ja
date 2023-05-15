@@ -1,0 +1,26 @@
+.input-container {
+  width: 100%;
+  min-width: 250px;
+  height: 70px;
+  position: relative;
+
+  input {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+
+    outline: none;
+    padding: 1em;
+
+    font-size: 1em;
+    font-family: "Poppins", sans-serif;
+  }
+
+  label {
+    position: absolute;
+
+    font-size: 0.8em;
+    left: 20px;
+    top: 5px;
+  }
+}

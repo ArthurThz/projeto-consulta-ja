@@ -9,7 +9,7 @@ import MyConsultation from "./components/Routes/myConsultation/MyConsultation";
 import NewConsultation from "./components/Routes/newConsultation/NewConsultation";
 import DoctorCard from "./components/DoctorCard/DoctorCard";
 import Footer from "./components/Layout/Footer/Footer";
-import SignUp from "./components/Sign-Up/Sign-Up";
+import SignUp from "./components/Routes/Sign-Up/Sign-Up";
 
 const App = () => {
   return (
