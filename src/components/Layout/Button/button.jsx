@@ -1,7 +1,7 @@
 import "./button.styles.scss";
 
-const Button = ({ children, type }) => {
-  return <button type={type}>{children}</button>;
+const Button = ({ children, type, onClick }) => {
+  return <button onClick={onClick} type={type}>{children}</button>;
 };
 
 export default Button;

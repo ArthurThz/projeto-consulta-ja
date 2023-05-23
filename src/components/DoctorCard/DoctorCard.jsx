@@ -7,8 +7,6 @@ const DoctorCard = () => {
   const { IdConsultation } = useContext(ConsultationContext);
   const [Doctors, setDoctors] = useState([]);
 
-  let teste = [];
-
   useEffect(() => {
     fetch("http://localhost:5000/doctor", {
       method: "GET",
@@ -24,8 +22,6 @@ const DoctorCard = () => {
   const filteredDoctors = Doctors.filter(
     (item) => item.IdEspecialidade == IdConsultation
   );
-
-  console.log(filteredDoctors);
 
   return (
     <div className="doctors-container">

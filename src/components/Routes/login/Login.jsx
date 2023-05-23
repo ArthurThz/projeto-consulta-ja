@@ -73,7 +73,9 @@ const Login = () => {
               </section>
 
               <section>
-                <a href="">esqueceu a senha?</a>
+                <a href="" className="forgot-password">
+                  esqueceu a senha?
+                </a>
               </section>
             </div>
 

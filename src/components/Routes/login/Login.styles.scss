@@ -91,6 +91,14 @@
             display: flex;
             align-items: center;
             gap: 0.5em;
+
+            a {
+              color: #031961be;
+
+              &:visited {
+                color: #031961be;
+              }
+            }
           }
         }
 
@@ -106,7 +114,7 @@
 
           color: #fff;
 
-          background-color: rgba(55, 55, 233, 0.89);
+          background-color: #031961be;
           &:disabled {
             opacity: 0.7;
           }
@@ -130,6 +138,11 @@
 
           a {
             text-decoration: none;
+            color: #031961be;
+
+            &:visited {
+              color: #031961be;
+            }
           }
 
           svg {
@@ -137,6 +150,17 @@
             height: 2em;
 
             color: rgb(34, 34, 204);
+          }
+        }
+        .sign-up {
+          span {
+            a {
+              color: #031961be;
+
+              &:visited {
+                color: #031961be;
+              }
+            }
           }
         }
       }

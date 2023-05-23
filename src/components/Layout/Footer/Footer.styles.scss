@@ -10,10 +10,12 @@ footer {
 
   .info {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+
     width: 100%;
 
-    padding: 5em 0;
+    padding: 3em 0;
   }
 
   .social-media,
@@ -72,5 +74,11 @@ footer {
   .social-media svg {
     height: 1.5em;
     width: 1.5em;
+  }
+  .copyright {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

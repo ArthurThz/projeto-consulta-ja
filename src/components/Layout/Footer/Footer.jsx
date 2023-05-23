@@ -21,20 +21,11 @@ const Footer = () => {
           </section>
         </div>
 
-        <div className="about-us">
-          <span>Quem Somos</span>
-          <section>
-            <a href="">Nossos Fundadores</a>
-            <a href="">Missão, Visão e Valores</a>
-            <a href="">CNPJ</a>
-          </section>
-        </div>
-
         <div className="contact">
           <span>Contatos</span>
           <section>
             <p>
-              <SlEnvolope /> constultaja@consulta.ja.br
+              <SlEnvolope /> consultaja@consulta.com.br
             </p>
             <p>
               <SlPhone /> (11) 95555-5555

@@ -10,10 +10,16 @@
     border-radius: 10px;
 
     outline: none;
-    padding: 1em;
+    padding: 1.5em;
 
     font-size: 1em;
     font-family: "Poppins", sans-serif;
+
+    &:focus {
+      outline: auto;
+      outline-color: #413eddbe;
+      box-shadow: 0 0 10px 0 #413edd;
+    }
   }
 
   label {

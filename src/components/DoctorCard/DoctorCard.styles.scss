@@ -1,7 +1,7 @@
 .doctors-container {
   width: 100%;
-  padding: 2em;
-  min-height: 100vh;
+  padding: 2em 0;
+  min-height: 80vh;
   height: 100%;
   display: grid;
   grid-template-columns: repeat(3, 2fr);
@@ -13,24 +13,31 @@
 .card-doctors {
   height: 400px;
   width: 70%;
-  background-color: rgba(55, 145, 235, 0.548);
+
+  background-color: #031961be;
+
   padding: 2em;
 
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border: none;
+
+  border: 3px solid #031961e8;
   border-radius: 5px;
   transition: all 0.2s ease-in;
 
   &:hover {
-    border: 1px solid black;
-    transform: scale(1.1);
+    box-shadow: 0 0 15px 0 rgba(6, 7, 61, 0.836);
   }
 
+  .doctor-name,
+  .specialty,
+  .local {
+    color: #cacaca;
+  }
   .doctor-name {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 
   .specialty {
@@ -50,6 +57,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease-in;
+    background-color: rgba(104, 152, 201, 0.849);
 
     &:hover {
       background-color: rgba(104, 152, 201, 0.849);

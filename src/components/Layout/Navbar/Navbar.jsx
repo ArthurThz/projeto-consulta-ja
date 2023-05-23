@@ -1,11 +1,12 @@
 import "./Navbar.styles.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 // Icons
 import heatlhIcon from "../../../assets/icon/health.png";
 
 import { userContext } from "../../../Context/UserContext";
 const NavBar = () => {
+  const navigate = useNavigate();
   const { user, setUser } = useContext(userContext);
   return (
     <nav>
@@ -34,7 +35,13 @@ const NavBar = () => {
           ""
         )}
         {user ? (
-          <span className="nav-link" onClick={() => setUser("")}>
+          <span
+            className="nav-link"
+            onClick={() => {
+              setUser("");
+              navigate("/login");
+            }}
+          >
             Sair
           </span>
         ) : (

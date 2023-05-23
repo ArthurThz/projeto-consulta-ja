@@ -35,8 +35,10 @@ const SignUp = () => {
               <Input name="Telefone" type="text" />
               <Input name="Sexo" type="text" />
             </div>
-            <Input name="Email" type="text" />
-            <Input name="Senha" type="password" />
+            <div className="input-box">
+              <Input name="Email" type="text" />
+              <Input name="Senha" type="password" />
+            </div>
             <Button type="submit" children="Confirmar" />
           </form>
         </div>

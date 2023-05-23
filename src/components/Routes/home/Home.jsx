@@ -63,14 +63,6 @@ const Home = () => {
             <h2>Planos Para Toda Familia</h2>
             <p>Junte a sua familia com a nossa!</p>
             <p>Planos adultos e infantis com os melhores preços</p>
-            <div className="group-button">
-              <button>
-                <img src={userSolo} alt="imagem" /> Pessoal
-              </button>
-              <button>
-                <img src={userFamily} alt="imagem" /> Familiar
-              </button>
-            </div>
           </div>
           <div className="right-content">
             <img src={familia} alt="imagem" />

@@ -1,19 +1,19 @@
 {
-  "users":[
+  "users": [
     {
-      "id":200,
-      "name":"Joao",
-      "password":"1234567"
+      "id": 200,
+      "name": "Joao",
+      "password": "1234567"
     },
     {
-      "id":201,
-      "name":"Maria",
-      "password":"1234567"
+      "id": 201,
+      "name": "Maria",
+      "password": "1234567"
     },
     {
-      "id":202,
-      "name":"Pedro",
-      "password":"1234567"
+      "id": 202,
+      "name": "Pedro",
+      "password": "1234567"
     }
   ],
   "consultation": [
@@ -34,6 +34,15 @@
       "Data": "30/02/2022",
       "horario": "11:00",
       "local": "Rua Carlos, 201"
+    },
+    {
+      "id": 3,
+      "paciente": "Arthur",
+      "doutor": "João",
+      "especialidade": "Alergista",
+      "Data": "22/02/2022",
+      "horario": "10:00",
+      "local": "Rua joao, 244"
     },
     {
       "id": 3,
@@ -112,9 +121,6 @@
     {
       "id": 6,
       "name": "Dermatologia"
-    },
-    {
-      "id": 7
     }
   ]
 }

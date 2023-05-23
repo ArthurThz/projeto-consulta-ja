@@ -1,0 +1,113 @@
+.my-consultation-container {
+  padding: 2em 0;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #ffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 1em;
+
+  h1 {
+    background-color: #031961be;
+    width: 100%;
+    color: #ffff;
+    text-align: center;
+  }
+
+  .slider {
+    width: 100%;
+    padding: 1.5em;
+    overflow-x: auto;
+    display: flex;
+    gap: 1.5em;
+
+    &::-webkit-scrollbar {
+      width: 9px;
+      height: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      width: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #031961be;
+      border-radius: 12px;
+    }
+    .info {
+      width: 35%;
+      height: 550px;
+      flex: none;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+
+      padding: 2em 0.3em;
+
+      border: 3px solid rgba(0, 0, 0, 0.459);
+      border-radius: 6px;
+
+      background-color: rgba(222, 234, 246, 0.876);
+
+      box-shadow: 0 0 10px 0 #0a27ce;
+
+      .consultation {
+        flex: none;
+        width: 70%;
+        padding: 2em 0;
+        height: auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+
+        flex-direction: column;
+        gap: 0.8em;
+        margin-bottom: 1em;
+
+        .doctor {
+          font-size: 1.8em;
+        }
+
+        .specialty {
+          font-size: 1.3em;
+        }
+
+        .date,
+        .hour,
+        .local {
+          font-size: 1.2em;
+        }
+      }
+      .options {
+        width: 90%;
+
+        display: flex;
+        justify-content: space-around;
+        padding: 1em;
+        border: 1px solid rgba(0, 0, 0, 0.404);
+        border-radius: 5px;
+        height: auto;
+
+        button {
+          width: auto;
+          padding: 0.5em;
+          width: 40%;
+          font-size: 1em;
+          border-radius: 5px;
+          cursor: pointer;
+          font-family: "Poppins";
+          font-weight: 500;
+          transition: 0.3s ease-in;
+          background-color: #031961be;
+          &:hover {
+            background-color: rgb(151, 179, 221);
+          }
+        }
+      }
+    }
+  }
+}
