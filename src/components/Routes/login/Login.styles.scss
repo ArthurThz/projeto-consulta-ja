@@ -9,6 +9,10 @@
 
   height: 80vh;
 
+  @media (max-width: 600px) {
+    padding: 2em 0.3em;
+  }
+
   .left-side,
   .right-side {
     width: 100%;
@@ -20,6 +24,9 @@
   }
 
   .left-side {
+    @media (max-width: 600px) {
+      display: none;
+    }
     border-top-left-radius: 1em;
     border-bottom-left-radius: 1em;
 
@@ -44,8 +51,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    @media (max-width: 600px) {
+      justify-content: start;
+      height: auto;
+      padding: 2.4em 0;
+    }
     .login {
+      @media (max-width: 600px) {
+        padding: 0 0.4em;
+      }
       width: 100%;
       padding: 0 5em;
 

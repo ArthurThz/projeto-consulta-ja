@@ -24,6 +24,11 @@
     display: flex;
     gap: 1.5em;
 
+    @media (max-width: 600px) {
+      overflow: auto;
+      flex-direction: column;
+    }
+
     &::-webkit-scrollbar {
       width: 9px;
       height: 10px;
@@ -37,13 +42,13 @@
       border-radius: 12px;
     }
     .info {
-      width: 35%;
+      width: 45%;
       height: 550px;
       flex: none;
 
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-around;
       flex-direction: column;
 
       padding: 2em 0.3em;
@@ -54,6 +59,10 @@
       background-color: rgba(222, 234, 246, 0.876);
 
       box-shadow: 0 0 10px 0 #0a27ce;
+
+      @media (max-width: 600px) {
+        width: 100%;
+      }
 
       .consultation {
         flex: none;
@@ -70,16 +79,25 @@
 
         .doctor {
           font-size: 1.8em;
+          @media (max-width: 600px) {
+            font-size: 1.4rem;
+          }
         }
 
         .specialty {
           font-size: 1.3em;
+          @media (max-width: 600px) {
+            font-size: 1rem;
+          }
         }
 
         .date,
         .hour,
         .local {
           font-size: 1.2em;
+          @media (max-width: 600px) {
+            font-size: 1rem;
+          }
         }
       }
       .options {
@@ -105,6 +123,9 @@
           background-color: #031961be;
           &:hover {
             background-color: rgb(151, 179, 221);
+          }
+          @media (max-width: 600px) {
+            font-size: 0.9rem;
           }
         }
       }

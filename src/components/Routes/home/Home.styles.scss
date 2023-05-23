@@ -6,11 +6,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     width: 100%;
     min-height: 65vh;
     height: 100%;
+
     gap: 2em;
     padding-top: 5em;
+
     background-image: url(../../../assets/image/doctor3.png);
     background-size: 40%;
     background-repeat: no-repeat;
@@ -18,6 +21,12 @@
     background-position-y: center;
 
     background-color: rgba(222, 234, 246, 0.876);
+
+    @media (max-width: 600px) {
+      background-image: none;
+      justify-content: center;
+      align-items: center;
+    }
 
     .text {
       display: flex;
@@ -30,15 +39,27 @@
       height: auto;
 
       padding: 1em 2em;
+
+      @media (max-width: 600px) {
+        width: 100%;
+      }
     }
 
     .text h2 {
       font-size: 2.5em;
+      @media (max-width: 600px) {
+        font-size: 1.4rem;
+        text-align: start;
+      }
     }
 
     .text p {
       font-size: 1.3em;
       text-align: justify;
+      @media (max-width: 600px) {
+        font-size: 1rem;
+        text-align: justify;
+      }
     }
 
     button {
@@ -57,6 +78,16 @@
       color: #fff;
 
       cursor: pointer;
+
+      @media (max-width: 600px) {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 0.8rem;
+      }
     }
 
     .data {
@@ -67,8 +98,11 @@
       justify-content: center;
       align-items: center;
 
+      @media (max-width: 600px) {
+        height: 80px;
+      }
       .item {
-        width: 90%;
+        width: 100%;
         height: 100%;
 
         display: flex;
@@ -77,7 +111,7 @@
 
         background-color: rgb(7, 6, 47);
 
-        border-radius: 1em;
+        border-radius: 0.5em;
 
         color: #fff;
 
@@ -85,21 +119,37 @@
 
         h3 {
           font-size: 1.5em;
+          @media (max-width: 600px) {
+            font-size: 0.7rem;
+            text-align: center;
+          }
         }
 
         p {
           font-size: 0.8em;
+          @media (max-width: 600px) {
+            font-size: 0.5rem;
+            width: 100%;
+            text-align: center;
+          }
         }
 
         .left,
         .center,
         .right {
+          border: 1px solid white;
+          width: 100%;
+          height: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-self: center;
+          justify-content: center;
 
           padding: 0 3em;
+
+          @media (max-width: 600px) {
+            padding: 0 0.1em;
+          }
         }
         .center {
           border-left: 2px solid white;
@@ -112,19 +162,23 @@
   .content {
     display: flex;
     flex-direction: column;
-
     padding: 3em 3em;
 
     width: 100%;
     height: auto;
-
+    @media (max-width: 600px) {
+      padding: 0.2em;
+    }
     .item {
       display: flex;
       align-items: center;
       justify-content: space-between;
 
       padding: 4em 0;
-
+      @media (max-width: 600px) {
+        flex-direction: column;
+        width: 100%;
+      }
       .left-content,
       .right-content {
         display: flex;
@@ -136,6 +190,10 @@
         padding: 0 2em;
 
         text-align: justify;
+
+        @media (max-width: 600px) {
+          width: 100%;
+        }
       }
 
       .left-content img,
@@ -151,6 +209,10 @@
         margin-bottom: 1em;
 
         color: rgb(13, 12, 102);
+        @media (max-width: 600px) {
+          text-align: center;
+          font-size: 1.3rem;
+        }
       }
 
       .left-content p,
@@ -159,39 +221,10 @@
         font-size: 1.2em;
 
         color: rgb(67, 67, 67);
-      }
-
-      .group-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        gap: 2em;
-        padding: 1em;
-
-        width: 100%;
-      }
-
-      .group-button button {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        width: 9em;
-        height: 3em;
-
-        font-size: 0.9em;
-        font-weight: bold;
-
-        border: 2px solid rgba(128, 128, 128, 0.31);
-        border-radius: 0.5em;
-
-        cursor: pointer;
-
-        background-color: transparent;
-      }
-
-      .group-button button img {
-        width: 2em;
+        @media (max-width: 600px) {
+          text-align: justify;
+          font-size: 0.9rem;
+        }
       }
     }
 
@@ -201,19 +234,35 @@
       width: 100%;
       background-color: rgba(222, 234, 246, 0.876);
 
+      @media (max-width: 600px) {
+        padding: 1em;
+      }
       .description {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
+        @media (max-width: 600px) {
+          width: 100%;
+          flex-direction: column;
+        }
+
         h2,
         p {
           width: 40%;
+          @media (max-width: 600px) {
+            width: 100%;
+            text-align: justify;
+          }
         }
 
         h2 {
           color: rgb(13, 12, 102);
           font-size: 1.8em;
+
+          @media (max-width: 600px) {
+            font-size: 1.3rem;
+          }
         }
 
         p {
@@ -226,12 +275,29 @@
         grid-template-columns: 35% 35% 35%;
         gap: 1em;
         padding: 2em 0;
-
+        @media (max-width: 600px) {
+          align-items: center;
+          justify-items: center;
+          grid-template-columns: 50% 50%;
+          gap: 0;
+        }
         .grid-item {
           display: flex;
           flex-direction: column;
 
           width: 80%;
+
+          @media (max-width: 600px) {
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            p {
+              display: none;
+            }
+            h3 {
+              font-size: 0.7rem;
+            }
+          }
 
           .imgItem {
             display: flex;
@@ -242,6 +308,10 @@
             height: 5em;
 
             background-color: rgba(171, 203, 236, 0.876);
+            @media (max-width: 600px) {
+              height: 4em;
+              width: 4.4em;
+            }
           }
 
           p {

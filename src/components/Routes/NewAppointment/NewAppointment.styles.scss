@@ -13,9 +13,17 @@
     font-size: 1.8rem;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
+    @media (max-width: 600px) {
+      font-size: 1.4em;
+    }
   }
 
   .item {
+    @media (max-width: 600px) {
+      width: 80%;
+      height: 70px;
+      font-size: 1.1em;
+    }
     min-width: 200px;
     width: 290px;
     height: 90px;

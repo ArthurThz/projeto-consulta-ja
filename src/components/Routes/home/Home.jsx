@@ -6,8 +6,6 @@ import areasImg from "../../../assets/image/areas-diversas.jpg";
 import familia from "../../../assets/image/familia.png";
 
 // ICONS
-import userSolo from "../../../assets/icon/user-solo.svg";
-import userFamily from "../../../assets/icon/user-family.svg";
 import pediatria from "../../../assets/icon/pediatria.png";
 import clinico from "../../../assets/icon/clinico.svg";
 import cardiologia from "../../../assets/icon/cardiologia.svg";

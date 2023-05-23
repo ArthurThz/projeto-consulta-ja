@@ -30,22 +30,21 @@ const NewAppointment = () => {
 
     return a == b ? 0 : a > b ? 1 : -1;
   });
-
   return (
     <div className="new-consultation-container">
       <p>Selecione uma especialidade</p>
 
-      {orderedSpecialty.map((specialty) => {
+      {orderedSpecialty.map((item) => {
         return (
           <a
-            key={specialty.id}
+            key={item.id}
             onClick={() => {
-              setIdConsultation(specialty.id);
+              setIdConsultation(item.id);
               navigate("/doctors");
             }}
             className="item"
           >
-            {specialty.name}
+            {item.name}
           </a>
         );
       })}
