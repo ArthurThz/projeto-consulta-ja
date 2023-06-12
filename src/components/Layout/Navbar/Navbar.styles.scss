@@ -3,7 +3,6 @@ nav {
   justify-content: space-between;
 
   padding: 2em;
-
   font-family: "Poppins", sans-serif;
 
   background-color: rgba(222, 234, 246, 0.876);
@@ -43,7 +42,6 @@ nav {
       justify-content: center;
       flex-direction: column;
       gap: 5px;
-
       &:hover {
         cursor: pointer;
       }

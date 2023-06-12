@@ -1,11 +1,43 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Sign-Up.styles.scss";
 
 import Input from "../../Layout/Input/input";
 import Button from "../../Layout/Button/button";
+import axios from "axios";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState({});
+
+  const handleOnChange = (event) => {
+    let { value, name } = event.target;
+
+    setUser({ ...user, [name]: value });
+  };
+
+  const submitUser = (event) => {
+    event.preventDefault();
+    axios
+      .post("http://localhost/consulta-ja-backend/cadastrar-usuario.php", user)
+      .then((res) => {
+        const { error, message } = res.data;
+
+        if (error === true) {
+          alert(message);
+          return;
+        }
+        alert("usuário cadastrado com sucesso!");
+      })
+      .catch(() => {
+        alert("Verifique os dados e tente novamente.");
+      })
+      .finally(() => {
+        navigate("/login");
+      });
+  };
   return (
     <div className="container">
       <main>
@@ -21,23 +53,23 @@ const SignUp = () => {
         </div>
 
         <div className="input-control">
-          <form>
+          <form onSubmit={submitUser}>
             <div className="input-box">
-              <Input name="Nome" type="text" />
-              <Input name="Sobrenome" type="text" />
+              <Input onChange={handleOnChange} name="Nome" type="text" />
+              <Input onChange={handleOnChange} name="Sobrenome" type="text" />
             </div>
             <div className="input-box">
-              <Input name="CPF" type="text" />
-              <Input name="Nascimento" type="date" />
+              <Input onChange={handleOnChange} name="cpf" type="text" />
+              <Input onChange={handleOnChange} name="Nascimento" type="date" />
             </div>
 
             <div className="input-box">
-              <Input name="Telefone" type="text" />
-              <Input name="Sexo" type="text" />
+              <Input onChange={handleOnChange} name="Telefone" type="text" />
+              <Input onChange={handleOnChange} name="Sexo" type="text" />
             </div>
             <div className="input-box">
-              <Input name="Email" type="text" />
-              <Input name="Senha" type="password" />
+              <Input onChange={handleOnChange} name="Email" type="text" />
+              <Input onChange={handleOnChange} name="Senha" type="password" />
             </div>
             <Button type="submit" children="Confirmar" />
           </form>

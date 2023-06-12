@@ -12,21 +12,20 @@ const NewAppointment = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/specialty", {
+    fetch("http://localhost/consulta-ja-backend/especialidades.php", {
       method: "GET",
       headers: {
         "Content-type": "Aplication/JSON",
       },
     })
       .then((response) => response.json())
-      .then((data) => setSpecialty(data))
-
+      .then((data) => setSpecialty(Object.values(data.records)))
       .catch((error) => console.log(error));
   }, []);
 
   const orderedSpecialty = Specialty.sort((x, y) => {
-    let a = x.name;
-    let b = y.name;
+    let a = x.especialidade;
+    let b = y.especialidade;
 
     return a == b ? 0 : a > b ? 1 : -1;
   });
@@ -44,7 +43,7 @@ const NewAppointment = () => {
             }}
             className="item"
           >
-            {item.name}
+            {item.especialidade}
           </a>
         );
       })}

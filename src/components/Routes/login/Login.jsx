@@ -1,21 +1,18 @@
 import "./Login.styles.scss";
 
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import { api } from "../../../utils/api";
-// Context
+
 import { userContext } from "../../../Context/UserContext";
 
 const Login = () => {
-  // Hooks
   const navigate = useNavigate();
   const { setUser } = useContext(userContext);
 
-  //State
   const [userData, setUserData] = useState({});
 
-  // event handlers
   const handleOnChangeInput = (event) => {
     const { name, value } = event.target;
     setUserData({ ...userData, [name]: value });
@@ -26,10 +23,10 @@ const Login = () => {
 
     try {
       const { data } = await api.get(
-        `users?name=${userData.userName}&password=${userData.password}`
+        `?cpf=${userData.userCPF}&senha=${userData.password}`
       );
-      if (data.length === 1) {
-        setUser(userData.userName);
+      if (data.user) {
+        setUser(data.user.nome);
         navigate("/");
       } else {
         alert("Usuário ou senha inválida");
@@ -47,11 +44,11 @@ const Login = () => {
         <div className="login">
           <form onSubmit={handleOnSubmit}>
             <div className="control-input">
-              <label htmlFor="userName">Nome</label>
+              <label htmlFor="userCPF">CPF</label>
               <input
                 type="text"
-                name="userName"
-                placeholder="Digite o seu nome"
+                name="userCPF"
+                placeholder="Digite o seu CPF"
                 onChange={handleOnChangeInput}
               />
             </div>
