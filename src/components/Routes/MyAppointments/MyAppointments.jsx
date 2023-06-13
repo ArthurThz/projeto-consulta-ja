@@ -1,22 +1,30 @@
+import { api } from "../../../utils/api";
 import "./MyAppointments.styles.scss";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { userContext } from "../../../Context/UserContext";
 
 const MyAppointments = () => {
   const [Consultation, setConsultation] = useState([]);
+  const [Reload, setReload] = useState(false);
+  const { user } = useContext(userContext);
 
   useEffect(() => {
-    // API que contem a tabela de consultas
-    fetch("http://localhost:5000/consultation", {
-      method: "GET",
-      headers: {
-        "Content-type": "Application/JSON",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setConsultation(data))
-      .catch((error) => console.log(error));
-  }, []);
+    api
+      .get(`getConsulta.php?cpf=${user.cpf}`)
+      .then((res) => {
+        const { appointment } = res.data;
+        setConsultation(Object.values(appointment));
+      })
+      .catch((err) => console.error(err));
+  }, [Reload]);
+
+  const deleteAppointment = (id) => {
+    api
+      .delete(`deleteConsulta.php?id=${id}`)
+      .then(() => setReload(true))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="my-consultation-container">
@@ -24,17 +32,19 @@ const MyAppointments = () => {
       <div className="slider">
         {Consultation.map((consulta) => {
           return (
-            <div className="info">
-              <div key={consulta.id} className="consultation">
-                <h3 className="doctor">{`Dr(a): ${consulta.doutor}`}</h3>
-                <span className="specialty">{`Especialidade: ${consulta.especialidade}`}</span>
-                <span className="date">{`Data: ${consulta.Data}`}</span>
-                <span className="hour">{`Hora: ${consulta.horario}`}</span>
-                <span className="local">{`Local: ${consulta.local}`}</span>
+            <div key={consulta.id_consulta} className="info">
+              <div className="consultation">
+                <h3 className="doctor">{`Dr(a): ${consulta.nome_medico}`}</h3>
+                <span className="specialty">{`Especialidade: ${consulta.nome_especialidade}`}</span>
               </div>
               <div className="options">
                 <button className="call">Ligar</button>
-                <button className="mark-off">Desmarcar</button>
+                <button
+                  onClick={() => deleteAppointment(consulta.id_consulta)}
+                  className="mark-off"
+                >
+                  Desmarcar
+                </button>
               </div>
             </div>
           );

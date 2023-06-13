@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://localhost/consulta-ja-backend/getUsers.php",
+  baseURL: "http://localhost/consulta-ja-backend/",
 });

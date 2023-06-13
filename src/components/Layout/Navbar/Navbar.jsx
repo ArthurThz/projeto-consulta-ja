@@ -1,6 +1,6 @@
 import "./Navbar.styles.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 // Icons
 import heatlhIcon from "../../../assets/icon/health.png";
 

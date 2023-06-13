@@ -4,6 +4,8 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ConsultationContext } from "../../../Context/ConsultationContext";
+import axios from "axios";
+import { api } from "../../../utils/api";
 
 const NewAppointment = () => {
   const [Specialty, setSpecialty] = useState([]);
@@ -12,15 +14,13 @@ const NewAppointment = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost/consulta-ja-backend/especialidades.php", {
-      method: "GET",
-      headers: {
-        "Content-type": "Aplication/JSON",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setSpecialty(Object.values(data.records)))
-      .catch((error) => console.log(error));
+    api
+      .get("especialidades.php")
+      .then((res) => {
+        const { records } = res.data;
+        setSpecialty(Object.values(records));
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const orderedSpecialty = Specialty.sort((x, y) => {

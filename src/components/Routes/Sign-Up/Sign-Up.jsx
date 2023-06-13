@@ -6,6 +6,7 @@ import "./Sign-Up.styles.scss";
 import Input from "../../Layout/Input/input";
 import Button from "../../Layout/Button/button";
 import axios from "axios";
+import { api } from "../../../utils/api";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -20,8 +21,9 @@ const SignUp = () => {
 
   const submitUser = (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost/consulta-ja-backend/cadastrar-usuario.php", user)
+
+    api
+      .post("cadastrar-usuario.php", user)
       .then((res) => {
         const { error, message } = res.data;
 

@@ -1,37 +1,58 @@
 import "./DoctorCard.styles.scss";
 
 import { useState, useEffect, useContext } from "react";
+import { userContext } from "../../Context/UserContext";
 
+import { useNavigate } from "react-router-dom";
 import { ConsultationContext } from "../../Context/ConsultationContext";
+import { api } from "../../utils/api";
 const DoctorCard = () => {
+  const navigate = useNavigate();
+  const { user } = useContext(userContext);
   const { IdConsultation } = useContext(ConsultationContext);
   const [Doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/doctor", {
-      method: "GET",
-      headers: {
-        "Content-type": "Application/JSON",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setDoctors(data))
-      .catch((error) => console.log(error));
+    api.get(`getDoctors.php?especialidade=${IdConsultation}`).then((res) => {
+      const { doctors } = res.data;
+      setDoctors(Object.values(doctors));
+    });
   }, []);
 
-  const filteredDoctors = Doctors.filter(
-    (item) => item.IdEspecialidade == IdConsultation
-  );
+  const confirmAppointment = async (nomeMedico, nomeEspecialidade) => {
+    let newAppointment = {
+      medico: nomeMedico,
+      especialidade: nomeEspecialidade,
+      paciente: user.nome,
+      cpf: user.cpf,
+    };
+    api.post("novaConsulta.php", newAppointment).then((res) => {
+      const { error } = res.data;
+
+      if (error === true) {
+        alert("Não Foi possivel marcar sua consulta, tente mais tarde!");
+        return;
+      }
+      alert("consulta marcada com sucesso!");
+      navigate("/minhasconsultas");
+    });
+  };
 
   return (
     <div className="doctors-container">
-      {filteredDoctors.map((item) => {
+      {Doctors.map((item) => {
         return (
-          <div key={item.IdEspecialidade} className="card-doctors">
-            <h2 className="doctor-name">{item.name}</h2>
-            <span className="specialty">{item.Especialidade}</span>
-            <p className="local">{item.endereco}</p>
-            <button className="confirm-btn">Confirmar</button>
+          <div key={item.id} className="card-doctors">
+            <h2 className="doctor-name">{item.nome}</h2>
+            <span className="specialty">{item.nome_especialidade}</span>
+            <button
+              className="confirm-btn"
+              onClick={() =>
+                confirmAppointment(item.nome, item.nome_especialidade)
+              }
+            >
+              Confirmar
+            </button>
           </div>
         );
       })}

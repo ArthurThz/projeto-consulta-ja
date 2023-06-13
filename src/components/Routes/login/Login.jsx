@@ -20,13 +20,12 @@ const Login = () => {
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const { data } = await api.get(
-        `?cpf=${userData.userCPF}&senha=${userData.password}`
+        `getUsers.php?cpf=${userData.userCPF}&senha="${userData.password}"`
       );
       if (data.user) {
-        setUser(data.user.nome);
+        setUser(data.user);
         navigate("/");
       } else {
         alert("Usuário ou senha inválida");
