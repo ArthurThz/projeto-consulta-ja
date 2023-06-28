@@ -6,10 +6,12 @@ import { useState, useContext, useEffect } from "react";
 import { api } from "../../../utils/api";
 
 import { userContext } from "../../../Context/UserContext";
+import { isLoggedContext } from "../../../Context/IsLoggedContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setUser } = useContext(userContext);
+  const { user } = useContext(userContext);
+  const { setIsLogged } = useContext(isLoggedContext);
 
   const [userData, setUserData] = useState({});
 
@@ -18,21 +20,14 @@ const Login = () => {
     setUserData({ ...userData, [name]: value });
   };
 
-  const handleOnSubmit = async (event) => {
+  const handleOnSubmit = (event) => {
     event.preventDefault();
-    try {
-      const { data } = await api.get(
-        `getUsers.php?cpf=${userData.userCPF}&senha="${userData.password}"`
-      );
-      if (data.user) {
-        setUser(data.user);
-        navigate("/");
-      } else {
-        alert("Usuário ou senha inválida");
-      }
-    } catch {
-      alert("Houve um erro, tente novamente");
+    if (user.cpf === !userData.cpf && user.senha === !userData.password) {
+      alert("CPF ou senha incorretos, tente novamente");
+      return;
     }
+    setIsLogged(true);
+    navigate("/");
   };
 
   return (

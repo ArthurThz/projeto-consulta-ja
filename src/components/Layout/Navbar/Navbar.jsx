@@ -1,13 +1,13 @@
 import "./Navbar.styles.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 // Icons
 import heatlhIcon from "../../../assets/icon/health.png";
-
-import { userContext } from "../../../Context/UserContext";
+import { isLoggedContext } from "../../../Context/IsLoggedContext";
 const NavBar = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(userContext);
+
+  const { isLogged, setIsLogged } = useContext(isLoggedContext);
 
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
@@ -36,25 +36,25 @@ const NavBar = () => {
         <Link to="/" className="nav-link">
           Home
         </Link>
-        {user ? (
+        {isLogged === true ? (
           <Link className="nav-link" to="/novaconsulta">
             Nova Consulta
           </Link>
         ) : (
           ""
         )}
-        {user ? (
+        {isLogged === true ? (
           <Link className="nav-link" to="/minhasconsultas">
             Minhas Consultas
           </Link>
         ) : (
           ""
         )}
-        {user ? (
+        {isLogged === true ? (
           <span
             className="nav-link"
             onClick={() => {
-              setUser("");
+              setIsLogged(false);
               navigate("/login");
             }}
           >
@@ -77,14 +77,14 @@ const NavBar = () => {
             <Link to="/" className="nav-link" onClick={closeMenu}>
               Home
             </Link>
-            {user ? (
+            {isLogged === true ? (
               <Link className="nav-link" to="/novaconsulta" onClick={closeMenu}>
                 Nova Consulta
               </Link>
             ) : (
               ""
             )}
-            {user ? (
+            {isLogged === true ? (
               <Link
                 className="nav-link"
                 to="/minhasconsultas"
@@ -95,11 +95,11 @@ const NavBar = () => {
             ) : (
               ""
             )}
-            {user ? (
+            {isLogged === true ? (
               <span
                 className="nav-link"
                 onClick={() => {
-                  setUser("");
+                  setIsLogged(false);
                   navigate("/login");
                   closeMenu;
                 }}
