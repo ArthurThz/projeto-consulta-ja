@@ -1,27 +1,29 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
 
 import "./Sign-Up.styles.scss";
 
+import { apiRoute } from "../../../services/api";
 import Input from "../../Layout/Input/input";
 import Button from "../../Layout/Button/button";
 
-import { userContext } from "../../../Context/UserContext";
 const SignUp = () => {
-  const { user, setUser } = useContext(userContext);
   const navigate = useNavigate();
 
-  const [newUser, setNewUser] = useState({});
+  const [newUser, setNewUser] = useState(null);
 
-  const handleOnChange = (event) => {
+  const handleInputOnChange = (event) => {
     let { value, name } = event.target;
 
     setNewUser({ ...newUser, [name]: value });
   };
 
-  const submitUser = (event) => {
+  const submitUser = async (event) => {
     event.preventDefault();
+    if (!newUser) {
+      alert("Os campos precisam ser preenchidos!");
+      return;
+    }
 
     if (!newUser.nome) {
       alert("Digite o seu nome");
@@ -38,9 +40,22 @@ const SignUp = () => {
       return;
     }
 
-    setUser(newUser);
-    navigate("/login");
+    apiRoute
+      .post("/users", newUser)
+      .then(() => {
+        alert("Usuário cadastrado com sucesso");
+        setUser(null);
+        navigate("/login");
+      })
+      .catch((err) => {
+        alert(
+          "Não foi possivel cadastrar o usuário verifique os dados e tente novamente"
+        );
+        console.error("error: " + err);
+        return;
+      });
   };
+
   return (
     <div className="container">
       <main>
@@ -58,12 +73,37 @@ const SignUp = () => {
         <div className="input-control">
           <form onSubmit={submitUser}>
             <div className="input-box">
-              <Input onChange={handleOnChange} name="nome" type="text" />
-              <Input onChange={handleOnChange} name="sobrenome" type="text" />
+              <Input onChange={handleInputOnChange} name="nome" type="text" />
+              <Input
+                onChange={handleInputOnChange}
+                name="sobrenome"
+                type="text"
+              />
             </div>
             <div className="input-box">
-              <Input onChange={handleOnChange} name="cpf" type="text" />
-              <Input onChange={handleOnChange} name="senha" type="password" />
+              <Input onChange={handleInputOnChange} name="cpf" type="text" />
+              <Input
+                onChange={handleInputOnChange}
+                name="data_nasc"
+                type="date"
+              />
+            </div>
+
+            <div className="input-box">
+              <Input
+                onChange={handleInputOnChange}
+                name="telefone"
+                type="text"
+              />
+              <Input onChange={handleInputOnChange} name="sexo" type="text" />
+            </div>
+            <div className="input-box">
+              <Input onChange={handleInputOnChange} name="email" type="text" />
+              <Input
+                onChange={handleInputOnChange}
+                name="senha"
+                type="password"
+              />
             </div>
             <Button type="submit" children="Confirmar" />
           </form>

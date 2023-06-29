@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 import { ConsultationContext } from "../../../Context/ConsultationContext";
 import axios from "axios";
-import { api } from "../../../utils/api";
 
 const NewAppointment = () => {
   const [Specialty, setSpecialty] = useState([]);

@@ -5,7 +5,7 @@ import { userContext } from "../../Context/UserContext";
 
 import { useNavigate } from "react-router-dom";
 import { ConsultationContext } from "../../Context/ConsultationContext";
-import { api } from "../../utils/api";
+
 const DoctorCard = () => {
   const navigate = useNavigate();
   const { user } = useContext(userContext);

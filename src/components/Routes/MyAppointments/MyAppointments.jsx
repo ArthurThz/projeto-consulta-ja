@@ -1,4 +1,3 @@
-import { api } from "../../../utils/api";
 import "./MyAppointments.styles.scss";
 
 import { useState, useEffect, useContext } from "react";
