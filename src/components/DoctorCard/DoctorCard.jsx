@@ -4,20 +4,35 @@ import { useState, useEffect, useContext } from "react";
 import { userContext } from "../../Context/UserContext";
 
 import { useNavigate } from "react-router-dom";
-import { ConsultationContext } from "../../Context/ConsultationContext";
+import { appointmentContext } from "../../Context/ConsultationContext";
 
+import { apiRoute } from "../../services/api";
 const DoctorCard = () => {
   const navigate = useNavigate();
   const { user } = useContext(userContext);
-  const { IdConsultation } = useContext(ConsultationContext);
+  const { IdAppointment } = useContext(appointmentContext);
+  const [specialty, setSpecialty] = useState([]);
   const [Doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    api.get(`getDoctors.php?especialidade=${IdConsultation}`).then((res) => {
-      const { doctors } = res.data;
-      setDoctors(Object.values(doctors));
-    });
+    apiRoute
+      .get(`/doctors?id_especialidade=eq.${IdAppointment}&select=*`)
+      .then((res) => {
+        const { data } = res;
+        setDoctors(data);
+      });
   }, []);
+
+  useEffect(() => {
+    apiRoute.get(`/specialty?id=eq.${IdAppointment}&select=*`).then((res) => {
+      const { data } = res;
+
+      if (!data) {
+        setSpecialty(null);
+      }
+      setSpecialty(data[0].nome_especialidade);
+    });
+  }, [specialty]);
 
   const confirmAppointment = async (nomeMedico, nomeEspecialidade) => {
     let newAppointment = {
@@ -26,16 +41,6 @@ const DoctorCard = () => {
       paciente: user.nome,
       cpf: user.cpf,
     };
-    api.post("novaConsulta.php", newAppointment).then((res) => {
-      const { error } = res.data;
-
-      if (error === true) {
-        alert("Não Foi possivel marcar sua consulta, tente mais tarde!");
-        return;
-      }
-      alert("consulta marcada com sucesso!");
-      navigate("/minhasconsultas");
-    });
   };
 
   return (
@@ -43,13 +48,11 @@ const DoctorCard = () => {
       {Doctors.map((item) => {
         return (
           <div key={item.id} className="card-doctors">
-            <h2 className="doctor-name">{item.nome}</h2>
-            <span className="specialty">{item.nome_especialidade}</span>
+            <h2 className="doctor-name">{item.nome_doutor}</h2>
+            <span className="specialty">{specialty}</span>
             <button
               className="confirm-btn"
-              onClick={() =>
-                confirmAppointment(item.nome, item.nome_especialidade)
-              }
+              onClick={() => confirmAppointment(item.nome, specialty)}
             >
               Confirmar
             </button>
