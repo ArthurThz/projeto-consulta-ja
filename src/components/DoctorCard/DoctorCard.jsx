@@ -13,6 +13,7 @@ const DoctorCard = () => {
   const { IdAppointment } = useContext(appointmentContext);
   const [specialty, setSpecialty] = useState([]);
   const [Doctors, setDoctors] = useState([]);
+  const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
     apiRoute
@@ -34,6 +35,14 @@ const DoctorCard = () => {
     });
   }, [specialty]);
 
+  const fectchScheduleData = async (doctorId) => {
+    const { data } = await apiRoute.get(
+      `/schedule?id_medico=eq.${doctorId}&select=*`
+    );
+
+    setSchedule(data);
+  };
+
   const confirmAppointment = async (nomeMedico, nomeEspecialidade) => {
     let newAppointment = {
       medico: nomeMedico,
@@ -50,6 +59,16 @@ const DoctorCard = () => {
           <div key={item.id} className="card-doctors">
             <h2 className="doctor-name">{item.nome_doutor}</h2>
             <span className="specialty">{specialty}</span>
+            <select onClick={() => fectchScheduleData(item.id)}>
+              {schedule.map((item) => {
+                return (
+                  <option key={item.id} value={item.id}>
+                    <span>{item.data}</span>
+                    <span>{item.hora}</span>
+                  </option>
+                );
+              })}
+            </select>
             <button
               className="confirm-btn"
               onClick={() => confirmAppointment(item.nome, specialty)}
