@@ -3,7 +3,7 @@ import "./NewAppointment.styles.scss";
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { appointmentContext } from "../../../Context/ConsultationContext";
+import { appointmentContext } from "../../../Context/AppointmentContext";
 
 import { apiRoute } from "../../../services/api";
 

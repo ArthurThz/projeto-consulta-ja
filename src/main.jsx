@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-import { AppointmentProvider } from "./Context/ConsultationContext";
+import { AppointmentProvider } from "./Context/AppointmentContext";
 
 import { UserProvider } from "./Context/UserContext";
 import { LoginProvider } from "./Context/IsLoggedContext";

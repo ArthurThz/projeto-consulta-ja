@@ -1,0 +1,66 @@
+.menu-container {
+  position: relative;
+  width: 95%;
+
+  padding: 0.5rem 0.5rem;
+  margin-top: 5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid gray;
+
+  color: #fff;
+
+  border-radius: 0.5rem;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .menu {
+    width: 100%;
+
+    position: absolute;
+
+    display: flex;
+
+    background-color: #2e3c68;
+
+    padding: 1rem;
+
+    top: 100%;
+
+    border: 1px solid gray;
+    border-radius: 0.2rem;
+
+    ul {
+      list-style: none;
+
+      li {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        cursor: pointer;
+
+        transition: all 0.5s ease-out;
+
+        border-bottom: 1px solid #03196105;
+
+        &:hover {
+          border-bottom: 1px solid white;
+        }
+      }
+    }
+  }
+}
