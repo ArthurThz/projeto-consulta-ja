@@ -12,7 +12,6 @@ import cardiologia from "../../../assets/icon/cardiologia.svg";
 import fisioterapia from "../../../assets/icon/fisio.png";
 import oftalmo from "../../../assets/icon/oftalmologia.svg";
 import dermatologia from "../../../assets/icon/dermato.png";
-import DropDownMenu from "../../Layout/DropDownMenu/Menu";
 
 const Home = () => {
   return (

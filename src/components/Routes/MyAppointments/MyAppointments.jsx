@@ -4,28 +4,42 @@ import { useState, useEffect, useContext } from "react";
 import { userContext } from "../../../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 
+import { apiRoute } from "../../../services/api";
+
 const MyAppointments = () => {
   const navigate = useNavigate();
   const [Consultation, setConsultation] = useState([]);
-  const [Reload, setReload] = useState(false);
+  const [Reload, setReload] = useState(true);
   const { user } = useContext(userContext);
 
-  useEffect(() => {
-    api
-      .get(`getConsulta.php?cpf=${user.cpf}`)
-      .then((res) => {
-        const { appointment } = res.data;
-        setConsultation(Object.values(appointment));
-        Reload === true ? setReload(false) : "";
-      })
-      .catch((err) => console.error(err));
-  }, [Reload]);
+  console.log("renderizou");
 
-  const deleteAppointment = (id) => {
-    api
-      .delete(`deleteConsulta.php?id=${id}`)
-      .then(() => (Reload === false ? setReload(true) : ""))
-      .catch((err) => console.log(err));
+  useEffect(() => {
+    document.title = "Minhas Consultas";
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const { data } = await apiRoute.get(
+      `/appointments?cpf_paciente=eq.${user.cpf}&select=*`
+    );
+    setConsultation(data);
+  };
+
+  const deleteAppointment = async (id, data, hora) => {
+    apiRoute.patch(`/schedule?data=eq.${data}&hora=eq.${hora}`, {
+      is_avaliable: true,
+    });
+
+    apiRoute.delete(`/appointments?id=eq.${id}`).then((res) => {
+      if (res.status !== 204) {
+        alert("algo deu errado");
+        console.log(res);
+        return;
+      }
+
+      fetchData();
+    });
   };
 
   return (
@@ -36,15 +50,25 @@ const MyAppointments = () => {
           <>
             {Consultation.map((consulta) => {
               return (
-                <div key={consulta.id_consulta} className="info">
+                <div key={consulta.id} className="info">
                   <div className="consultation">
                     <h3 className="doctor">{`Dr(a): ${consulta.nome_medico}`}</h3>
-                    <span className="specialty">{`Especialidade: ${consulta.nome_especialidade}`}</span>
+                    <span className="specialty">{`Especialidade: ${consulta.especialidade}`}</span>
+                    <div className="appointment-info">
+                      <span>Data: {consulta.data}</span>
+                      <span>Hora: {consulta.hora}</span>
+                    </div>
                   </div>
                   <div className="options">
                     <button className="call">Ligar</button>
                     <button
-                      onClick={() => deleteAppointment(consulta.id_consulta)}
+                      onClick={() =>
+                        deleteAppointment(
+                          consulta.id,
+                          consulta.data,
+                          consulta.hora
+                        )
+                      }
                       className="mark-off"
                     >
                       Desmarcar

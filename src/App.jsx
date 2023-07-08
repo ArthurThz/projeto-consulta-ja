@@ -11,18 +11,29 @@ import DoctorCard from "./components/DoctorCard/DoctorCard";
 import Footer from "./components/Layout/Footer/Footer";
 import SignUp from "./components/Routes/Sign-Up/Sign-Up";
 
+import { userContext } from "./Context/UserContext";
+import { useContext } from "react";
+
 const App = () => {
+  const { user } = useContext(userContext);
   return (
     <div>
       <Router>
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<SignUp />} />
+          {/* {user ? (
+            <>
+             
+            </>
+          ) : (
+            []
+          )} */}
+          <Route path="/doctors" element={<DoctorCard />} />
           <Route path="/novaconsulta" element={<NewAppointment />} />
           <Route path="/minhasconsultas" element={<MyAppointments />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/doctors" element={<DoctorCard />} />
-          <Route path="/cadastro" element={<SignUp />} />
         </Routes>
         <Footer />
       </Router>

@@ -11,28 +11,28 @@ import Input from "../../Layout/Input/input";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { user } = useContext(userContext);
+  const { setUser } = useContext(userContext);
   const { setIsLogged } = useContext(isLoggedContext);
 
-  const [userData, setUserData] = useState({});
+  const [inputData, setInputData] = useState({});
 
   const handleOnChangeInput = (event) => {
     const { name, value } = event.target;
-    setUserData({ ...userData, [name]: value });
+    setInputData({ ...inputData, [name]: value });
   };
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
     try {
       const { data } = await apiRoute.get(
-        `/users?cpf=eq.${userData.cpf}&select=*&senha=eq.${userData.senha}&select=*`
+        `/users?cpf=eq.${inputData.cpf}&select=*&senha=eq.${inputData.senha}&select=*`
       );
 
       if (data.length !== 1) {
         alert("Usuário não encontrado");
         return;
       }
-
+      setUser(data[0]);
       setIsLogged(true);
       navigate("/");
     } catch {

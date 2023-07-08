@@ -9,13 +9,13 @@ import { UserProvider } from "./Context/UserContext";
 import { LoginProvider } from "./Context/IsLoggedContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <LoginProvider>
-      <UserProvider>
-        <AppointmentProvider>
-          <App />
-        </AppointmentProvider>
-      </UserProvider>
-    </LoginProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <LoginProvider>
+    <UserProvider>
+      <AppointmentProvider>
+        <App />
+      </AppointmentProvider>
+    </UserProvider>
+  </LoginProvider>
+  // {/* </React.StrictMode> */}
 );

@@ -40,20 +40,30 @@ const DoctorCard = () => {
 
       setSpecialty(data[0]);
     });
-  }, [specialty]);
+  }, []);
 
-  const confirmAppointment = async (idMedico) => {
+  const confirmAppointment = async (idMedico, nomeMedico, especialidade) => {
     let newAppointment = {
       id_medico: idMedico,
-      cpf_paciente: "12345678910",
+      nome_medico: nomeMedico,
+      especialidade: especialidade,
+      cpf_paciente: user.cpf,
       id_especialidade: specialty.id,
       data: ScheduleDate,
       hora: ScheduleHour,
     };
+
     apiRoute.patch(`/schedule?id=eq.${IdSchedule}`, { is_avaliable: false });
+
     apiRoute
       .post("/appointments", newAppointment)
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (res.status === !201) {
+          console.log(res.status);
+          return;
+        }
+        navigate("/minhasconsultas");
+      })
       .catch((err) => console.log(err));
   };
 
@@ -67,7 +77,13 @@ const DoctorCard = () => {
             <DropDownMenu doctorId={item.id} />
             <button
               className="confirm-btn"
-              onClick={() => confirmAppointment(item.id)}
+              onClick={() =>
+                confirmAppointment(
+                  item.id,
+                  item.nome_doutor,
+                  specialty.nome_especialidade
+                )
+              }
             >
               Confirmar
             </button>
