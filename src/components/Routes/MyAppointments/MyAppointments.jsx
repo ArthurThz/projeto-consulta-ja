@@ -12,8 +12,6 @@ const MyAppointments = () => {
   const [Reload, setReload] = useState(true);
   const { user } = useContext(userContext);
 
-  console.log("renderizou");
-
   useEffect(() => {
     document.title = "Minhas Consultas";
     fetchData();

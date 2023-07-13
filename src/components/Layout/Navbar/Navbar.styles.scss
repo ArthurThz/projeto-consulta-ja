@@ -5,10 +5,10 @@ nav {
   padding: 2em;
   font-family: "Poppins", sans-serif;
 
-  background-color: rgba(222, 234, 246, 0.876);
-
   height: 6.5em;
 
+  background-color: #f0f0f0;
+  border-bottom: 1px solid rgb(216, 215, 215);
   @media (max-width: 600px) {
     padding: 0.2em;
   }
@@ -16,7 +16,8 @@ nav {
   .menu {
     z-index: 9;
     display: none;
-    background-color: rgb(222, 234, 246);
+
+    background-color: #f0f0f0;
     position: fixed;
 
     top: 0;
@@ -111,7 +112,7 @@ nav {
         margin-left: 10px;
       }
 
-      color: #0a27ce;
+      color: #07062f;
     }
 
     img {

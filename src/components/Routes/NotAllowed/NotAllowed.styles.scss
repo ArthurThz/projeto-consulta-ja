@@ -1,0 +1,40 @@
+.not-allowed-container {
+  min-height: 80vh;
+  padding: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgb(153, 188, 211);
+
+  img {
+    width: 40%;
+    height: 40%;
+  }
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 1rem;
+
+  h1 {
+    color: rgb(214, 16, 16);
+    font-size: 4rem;
+    letter-spacing: 3px;
+  }
+
+  p {
+    font-size: 1.8rem;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+  }
+
+  button {
+    font-size: 1.4rem;
+  }
+}

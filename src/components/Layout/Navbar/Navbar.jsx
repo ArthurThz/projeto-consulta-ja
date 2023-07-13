@@ -2,7 +2,7 @@ import "./Navbar.styles.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 // Icons
-import heatlhIcon from "../../../assets/icon/health.png";
+import navbarIcon from "../../../assets/image/navbar-icon.svg";
 import { isLoggedContext } from "../../../Context/IsLoggedContext";
 const NavBar = () => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const NavBar = () => {
       <div className="nav-left">
         <h1>Consulta já</h1>
         <Link to="/">
-          <img src={heatlhIcon} alt="icon consultaja" />
+          <img src={navbarIcon} alt="icon consultaja" />
         </Link>
       </div>
       <div className="nav-right-mobile">
