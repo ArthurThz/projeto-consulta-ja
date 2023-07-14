@@ -57,7 +57,7 @@ export const Presentation = styled.div`
     width: 80%;
   }
 
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.md}) and (max-width: 1024px) {
     width: 90%;
 
     div {
@@ -87,9 +87,30 @@ export const Presentation = styled.div`
     gap: 2rem;
     height: 90vh;
 
+    img {
+      width: 40%;
+    }
+    div {
+      gap: 2rem;
+      flex: 2%;
+      h2 {
+        font-size: 1.7rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      button {
+        width: 180px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  @media (min-width: ${breakpoints.xl}) {
     div {
       gap: 2.5rem;
-      /* padding: 0 1rem; */
       h2 {
         font-size: 2rem;
       }
