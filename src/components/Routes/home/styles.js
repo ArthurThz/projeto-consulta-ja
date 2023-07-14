@@ -13,10 +13,6 @@ export const Container = styled.main`
   align-items: center;
   justify-content: center;
   gap: 3rem;
-  position: relative;
-  /* @media (min-width: ${breakpoints.md}) {
-    background-color: red;
-  } */
 
   /* @media (min-width: ${breakpoints.lg}) {
   } */
@@ -47,7 +43,7 @@ export const Presentation = styled.div`
     }
 
     p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       text-align: justify;
     }
 
@@ -59,6 +55,49 @@ export const Presentation = styled.div`
   }
   img {
     width: 80%;
+  }
+
+  @media (min-width: ${breakpoints.md}) {
+    width: 90%;
+
+    div {
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        letter-spacing: 0.8px;
+      }
+
+      button {
+        width: 200px;
+      }
+    }
+
+    img {
+      width: 45%;
+    }
+  }
+
+  @media (min-width: ${breakpoints.lg}) {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 90vh;
+
+    div {
+      gap: 2.5rem;
+      /* padding: 0 1rem; */
+      h2 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1.3rem;
+        text-align: start;
+      }
+    }
   }
 `;
 
@@ -91,7 +130,7 @@ export const DataItem = styled.div`
   justify-content: center;
 
   p {
-    font-size: 0.6rem;
+    font-size: 0.4rem;
   }
 `;
 
@@ -121,14 +160,14 @@ export const TextContainer = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   text-align: ${({ justify }) => (justify ? "justify" : "center")};
 
   color: ${colors.darkBlue};
 `;
 
 export const Text = styled.p`
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: ${colors.textGray};
   text-align: ${({ justify }) => (justify ? "justify" : "center")};
 `;
@@ -161,21 +200,32 @@ export const Grid = styled.div`
   grid-template-columns: 2fr 2fr;
   place-items: center;
   justify-items: center;
+  align-self: center;
   row-gap: 1rem;
   column-gap: 1rem;
 `;
 
 export const GridItem = styled.div`
+  min-height: 180px;
+  width: 100%;
   box-shadow: 0 0 5px 0 ${colors.textGray};
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0 0.4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   text-align: center;
   img {
     width: 20%;
     height: 40%;
+  }
+
+  h3 {
+    color: ${colors.darkBlue};
+  }
+  p {
+    font-size: 0.8rem;
+    text-align: center;
   }
 `;
