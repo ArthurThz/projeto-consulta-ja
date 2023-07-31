@@ -1,41 +1,70 @@
 import "./DoctorCard.styles.scss";
 
+import DropDownMenu from "../Layout/DropDownMenu/Menu";
+
 import { useState, useEffect, useContext } from "react";
 import { userContext } from "../../Context/UserContext";
 
 import { useNavigate } from "react-router-dom";
-import { ConsultationContext } from "../../Context/ConsultationContext";
-import { api } from "../../utils/api";
+import { appointmentContext } from "../../Context/AppointmentContext";
+
+import { apiRoute } from "../../services/api";
 const DoctorCard = () => {
   const navigate = useNavigate();
+
   const { user } = useContext(userContext);
-  const { IdConsultation } = useContext(ConsultationContext);
+
+  const { IdAppointment, IdSchedule, ScheduleDate, ScheduleHour } =
+    useContext(appointmentContext);
+
+  const [specialty, setSpecialty] = useState([]);
   const [Doctors, setDoctors] = useState([]);
+  const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
-    api.get(`getDoctors.php?especialidade=${IdConsultation}`).then((res) => {
-      const { doctors } = res.data;
-      setDoctors(Object.values(doctors));
+    apiRoute
+      .get(`/doctors?id_especialidade=eq.${IdAppointment}&select=*`)
+      .then((res) => {
+        const { data } = res;
+        setDoctors(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    apiRoute.get(`/specialty?id=eq.${IdAppointment}&select=*`).then((res) => {
+      const { data } = res;
+
+      if (!data) {
+        setSpecialty(null);
+      }
+
+      setSpecialty(data[0]);
     });
   }, []);
 
-  const confirmAppointment = async (nomeMedico, nomeEspecialidade) => {
+  const confirmAppointment = async (idMedico, nomeMedico, especialidade) => {
     let newAppointment = {
-      medico: nomeMedico,
-      especialidade: nomeEspecialidade,
-      paciente: user.nome,
-      cpf: user.cpf,
+      id_medico: idMedico,
+      nome_medico: nomeMedico,
+      especialidade: especialidade,
+      cpf_paciente: user.cpf,
+      id_especialidade: specialty.id,
+      data: ScheduleDate,
+      hora: ScheduleHour,
     };
-    api.post("novaConsulta.php", newAppointment).then((res) => {
-      const { error } = res.data;
 
-      if (error === true) {
-        alert("Não Foi possivel marcar sua consulta, tente mais tarde!");
-        return;
-      }
-      alert("consulta marcada com sucesso!");
-      navigate("/minhasconsultas");
-    });
+    apiRoute.patch(`/schedule?id=eq.${IdSchedule}`, { is_avaliable: false });
+
+    apiRoute
+      .post("/appointments", newAppointment)
+      .then((res) => {
+        if (res.status === !201) {
+          console.log(res.status);
+          return;
+        }
+        navigate("/minhasconsultas");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -43,12 +72,17 @@ const DoctorCard = () => {
       {Doctors.map((item) => {
         return (
           <div key={item.id} className="card-doctors">
-            <h2 className="doctor-name">{item.nome}</h2>
-            <span className="specialty">{item.nome_especialidade}</span>
+            <h2 className="doctor-name">{item.nome_doutor}</h2>
+            <span className="specialty">{specialty.nome_especialidade}</span>
+            <DropDownMenu doctorId={item.id} />
             <button
               className="confirm-btn"
               onClick={() =>
-                confirmAppointment(item.nome, item.nome_especialidade)
+                confirmAppointment(
+                  item.id,
+                  item.nome_doutor,
+                  specialty.nome_especialidade
+                )
               }
             >
               Confirmar

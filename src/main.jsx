@@ -3,16 +3,19 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-import { ConsultationProvider } from "./Context/ConsultationContext";
+import { AppointmentProvider } from "./Context/AppointmentContext";
 
 import { UserProvider } from "./Context/UserContext";
+import { LoginProvider } from "./Context/IsLoggedContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <LoginProvider>
     <UserProvider>
-      <ConsultationProvider>
+      <AppointmentProvider>
         <App />
-      </ConsultationProvider>
+      </AppointmentProvider>
     </UserProvider>
-  </React.StrictMode>
+  </LoginProvider>
+  // {/* </React.StrictMode> */}
 );

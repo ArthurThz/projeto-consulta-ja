@@ -10,19 +10,34 @@ import NewAppointment from "./components/Routes/NewAppointment/NewAppointment";
 import DoctorCard from "./components/DoctorCard/DoctorCard";
 import Footer from "./components/Layout/Footer/Footer";
 import SignUp from "./components/Routes/Sign-Up/Sign-Up";
+import NotAllowed from "./components/Routes/NotAllowed/NotAllowed";
+
+import { userContext } from "./Context/UserContext";
+import { useContext } from "react";
 
 const App = () => {
+  const { user } = useContext(userContext);
   return (
     <div>
       <Router>
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/novaconsulta" element={<NewAppointment />} />
-          <Route path="/minhasconsultas" element={<MyAppointments />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/doctors" element={<DoctorCard />} />
           <Route path="/cadastro" element={<SignUp />} />
+          {user ? (
+            <>
+              <Route path="/doctors" element={<DoctorCard />} />
+              <Route path="/novaconsulta" element={<NewAppointment />} />
+              <Route path="/minhasconsultas" element={<MyAppointments />} />
+            </>
+          ) : (
+            <>
+              <Route path="/doctors" element={<NotAllowed />} />
+              <Route path="/novaconsulta" element={<NotAllowed />} />
+              <Route path="/minhasconsultas" element={<NotAllowed />} />
+            </>
+          )}
         </Routes>
         <Footer />
       </Router>

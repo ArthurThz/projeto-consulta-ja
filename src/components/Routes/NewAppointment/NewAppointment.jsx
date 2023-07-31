@@ -3,47 +3,46 @@ import "./NewAppointment.styles.scss";
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ConsultationContext } from "../../../Context/ConsultationContext";
-import axios from "axios";
-import { api } from "../../../utils/api";
+import { appointmentContext } from "../../../Context/AppointmentContext";
+
+import { apiRoute } from "../../../services/api";
 
 const NewAppointment = () => {
   const [Specialty, setSpecialty] = useState([]);
-  const { setIdConsultation } = useContext(ConsultationContext);
+  const { setIdAppointment } = useContext(appointmentContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    api
-      .get("especialidades.php")
-      .then((res) => {
-        const { records } = res.data;
-        setSpecialty(Object.values(records));
-      })
-      .catch((err) => console.log(err));
+    apiRoute.get("/specialty").then((res) => {
+      const { data } = res;
+
+      setSpecialty(data);
+    });
   }, []);
 
   const orderedSpecialty = Specialty.sort((x, y) => {
-    let a = x.especialidade;
-    let b = y.especialidade;
+    let a = x.nome_especialidade;
+    let b = y.nome_especialidade;
 
     return a == b ? 0 : a > b ? 1 : -1;
   });
+
   return (
     <div className="new-consultation-container">
       <p>Selecione uma especialidade</p>
 
-      {orderedSpecialty.map((item) => {
+      {Specialty.map((item) => {
         return (
           <a
             key={item.id}
             onClick={() => {
-              setIdConsultation(item.id);
+              setIdAppointment(item.id);
               navigate("/doctors");
             }}
             className="item"
           >
-            {item.especialidade}
+            {item.nome_especialidade}
           </a>
         );
       })}

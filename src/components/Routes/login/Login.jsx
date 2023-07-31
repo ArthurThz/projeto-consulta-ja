@@ -1,37 +1,43 @@
 import "./Login.styles.scss";
 
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext, useEffect } from "react";
-
-import { api } from "../../../utils/api";
+import { useState, useContext } from "react";
 
 import { userContext } from "../../../Context/UserContext";
+import { isLoggedContext } from "../../../Context/IsLoggedContext";
+import { apiRoute } from "../../../services/api";
+
+import Input from "../../Layout/Input/input";
 
 const Login = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(userContext);
+  const { setIsLogged } = useContext(isLoggedContext);
 
-  const [userData, setUserData] = useState({});
+  const [inputData, setInputData] = useState({});
 
   const handleOnChangeInput = (event) => {
     const { name, value } = event.target;
-    setUserData({ ...userData, [name]: value });
+    setInputData({ ...inputData, [name]: value });
   };
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await api.get(
-        `getUsers.php?cpf=${userData.userCPF}&senha="${userData.password}"`
+      const { data } = await apiRoute.get(
+        `/users?cpf=eq.${inputData.cpf}&select=*&senha=eq.${inputData.senha}&select=*`
       );
-      if (data.user) {
-        setUser(data.user);
-        navigate("/");
-      } else {
-        alert("Usuário ou senha inválida");
+
+      if (data.length !== 1) {
+        alert("Usuário não encontrado");
+        return;
       }
+      setUser(data[0]);
+      setIsLogged(true);
+      navigate("/");
     } catch {
       alert("Houve um erro, tente novamente");
+      return;
     }
   };
 
@@ -42,29 +48,16 @@ const Login = () => {
         <h1>Login</h1>
         <div className="login">
           <form onSubmit={handleOnSubmit}>
-            <div className="control-input">
-              <label htmlFor="userCPF">CPF</label>
-              <input
-                type="text"
-                name="userCPF"
-                placeholder="Digite o seu CPF"
-                onChange={handleOnChangeInput}
-              />
-            </div>
-
-            <div className="control-input">
-              <label htmlFor="password">Senha</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Digite a sua senha"
-                onChange={handleOnChangeInput}
-              />
-            </div>
+            <Input type="text" name="cpf" onChange={handleOnChangeInput} />
+            <Input
+              type="password"
+              name="senha"
+              onChange={handleOnChangeInput}
+            />
 
             <div className="control-input-options">
               <section>
-                <input type="checkbox" name="rememberUser" />
+                <input type="checkbox" name="rememberUser" id="rememberUser" />
                 <label htmlFor="rememberUser">Lembrar de mim</label>
               </section>
 

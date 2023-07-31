@@ -3,43 +3,59 @@ import { Link, useNavigate } from "react-router-dom";
 
 import "./Sign-Up.styles.scss";
 
+import { apiRoute } from "../../../services/api";
 import Input from "../../Layout/Input/input";
 import Button from "../../Layout/Button/button";
-import axios from "axios";
-import { api } from "../../../utils/api";
 
 const SignUp = () => {
   const navigate = useNavigate();
 
-  const [user, setUser] = useState({});
+  const [newUser, setNewUser] = useState(null);
 
-  const handleOnChange = (event) => {
+  const handleInputOnChange = (event) => {
     let { value, name } = event.target;
 
-    setUser({ ...user, [name]: value });
+    setNewUser({ ...newUser, [name]: value });
   };
 
-  const submitUser = (event) => {
+  const submitUser = async (event) => {
     event.preventDefault();
+    if (!newUser) {
+      alert("Os campos precisam ser preenchidos!");
+      return;
+    }
 
-    api
-      .post("cadastrar-usuario.php", user)
-      .then((res) => {
-        const { error, message } = res.data;
+    if (!newUser.nome) {
+      alert("Digite o seu nome");
+      return;
+    }
 
-        if (error === true) {
-          alert(message);
-          return;
-        }
-        alert("usuário cadastrado com sucesso!");
-      })
-      .catch(() => {
-        alert("Verifique os dados e tente novamente.");
-      })
-      .finally(() => {
+    if (newUser.cpf.length != 11) {
+      alert("Digite o seu CPF corretamente");
+      return;
+    }
+
+    if (newUser.senha.length < 6) {
+      alert("Sua senha precisa ter no minimo 6 caracteres");
+      return;
+    }
+
+    apiRoute
+      .post("/users", newUser)
+      .then(() => {
+        alert("Usuário cadastrado com sucesso");
+        setUser(null);
         navigate("/login");
+      })
+      .catch((err) => {
+        alert(
+          "Não foi possivel cadastrar o usuário verifique os dados e tente novamente"
+        );
+        console.error("error: " + err);
+        return;
       });
   };
+
   return (
     <div className="container">
       <main>
@@ -57,21 +73,37 @@ const SignUp = () => {
         <div className="input-control">
           <form onSubmit={submitUser}>
             <div className="input-box">
-              <Input onChange={handleOnChange} name="Nome" type="text" />
-              <Input onChange={handleOnChange} name="Sobrenome" type="text" />
+              <Input onChange={handleInputOnChange} name="nome" type="text" />
+              <Input
+                onChange={handleInputOnChange}
+                name="sobrenome"
+                type="text"
+              />
             </div>
             <div className="input-box">
-              <Input onChange={handleOnChange} name="cpf" type="text" />
-              <Input onChange={handleOnChange} name="Nascimento" type="date" />
+              <Input onChange={handleInputOnChange} name="cpf" type="text" />
+              <Input
+                onChange={handleInputOnChange}
+                name="data_nasc"
+                type="date"
+              />
             </div>
 
             <div className="input-box">
-              <Input onChange={handleOnChange} name="Telefone" type="text" />
-              <Input onChange={handleOnChange} name="Sexo" type="text" />
+              <Input
+                onChange={handleInputOnChange}
+                name="telefone"
+                type="text"
+              />
+              <Input onChange={handleInputOnChange} name="sexo" type="text" />
             </div>
             <div className="input-box">
-              <Input onChange={handleOnChange} name="Email" type="text" />
-              <Input onChange={handleOnChange} name="Senha" type="password" />
+              <Input onChange={handleInputOnChange} name="email" type="text" />
+              <Input
+                onChange={handleInputOnChange}
+                name="senha"
+                type="password"
+              />
             </div>
             <Button type="submit" children="Confirmar" />
           </form>
