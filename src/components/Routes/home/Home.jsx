@@ -75,7 +75,7 @@ const Home = () => {
         </TextContainer>
       </Hero>
 
-      <Hero>
+      <Hero reverse>
         <ImageContainer src={familia} />
         <TextContainer>
           <Title>Planos Para Toda Familia</Title>
