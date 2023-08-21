@@ -140,6 +140,18 @@ export const OurData = styled.div`
     border-top: none;
     border-bottom: none;
   }
+
+  @media (min-width: ${breakpoints.md}) {
+    padding: 2.5rem 1.5rem;
+  }
+
+  @media (min-width: ${breakpoints.lg}) {
+    padding: 2.5rem 1.5rem;
+  }
+
+  @media (min-width: ${breakpoints.xl}) {
+    padding: 3rem 2rem;
+  }
 `;
 
 export const DataItem = styled.div`
@@ -151,7 +163,23 @@ export const DataItem = styled.div`
   justify-content: center;
 
   p {
-    font-size: 0.4rem;
+    font-size: 0.5rem;
+  }
+
+  @media (min-width: ${breakpoints.md}) {
+    p {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (min-width: ${breakpoints.xl}) {
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -168,11 +196,20 @@ export const Hero = styled.div`
   justify-content: center;
 
   gap: 1rem;
+
+  @media (min-width: ${breakpoints.lg}) {
+    flex-direction: ${({ reverse }) => (reverse ? "row-reverse" : "row")};
+  }
 `;
 
 export const ImageContainer = styled.img`
   height: 80%;
   width: 80%;
+
+  @media (min-width: ${breakpoints.lg}) {
+    height: 50%;
+    width: 50%;
+  }
 `;
 
 export const TextContainer = styled.div`
@@ -185,12 +222,27 @@ export const Title = styled.h2`
   text-align: ${({ justify }) => (justify ? "justify" : "center")};
 
   color: ${colors.darkBlue};
+
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: 1.6rem;
+  }
+
+  @media (min-width: ${breakpoints.xl}) {
+    font-size: 2rem;
+  }
 `;
 
 export const Text = styled.p`
   font-size: 1rem;
   color: ${colors.textGray};
   text-align: ${({ justify }) => (justify ? "justify" : "center")};
+
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: 1.1rem;
+  }
+  @media (min-width: ${breakpoints.xl}) {
+    font-size: 1rem;
+  }
 `;
 
 export const SpecialtyContainer = styled.div`
@@ -224,6 +276,13 @@ export const Grid = styled.div`
   align-self: center;
   row-gap: 1rem;
   column-gap: 1rem;
+
+  @media (min-width: ${breakpoints.md}) {
+    grid-template-columns: 2fr 2fr 2fr;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    grid-template-columns: 2fr 2fr 2fr;
+  }
 `;
 
 export const GridItem = styled.div`
@@ -248,5 +307,19 @@ export const GridItem = styled.div`
   p {
     font-size: 0.8rem;
     text-align: center;
+  }
+
+  @media (min-width: ${breakpoints.md}) {
+    width: 100%;
+  }
+
+  @media (min-width: ${breakpoints.lg}) {
+    width: 60%;
+    h3 {
+      font-size: 1.2rem;
+    }
+    p {
+      font-size: 1rem;
+    }
   }
 `;
