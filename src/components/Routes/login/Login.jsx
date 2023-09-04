@@ -6,6 +6,7 @@ import { useState, useContext } from "react";
 import { userContext } from "../../../Context/UserContext";
 import { isLoggedContext } from "../../../Context/IsLoggedContext";
 import { apiRoute } from "../../../services/api";
+import { Container, Form, FormContainer } from "./styles";
 
 import Input from "../../Layout/Input/input";
 
@@ -42,12 +43,10 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="left-side"></div>
-      <div className="right-side">
+    <Container>
+      <FormContainer>
         <h1>Login</h1>
-        <div className="login">
-          <form onSubmit={handleOnSubmit}>
+          <Form onSubmit={handleOnSubmit}>
             <Input type="text" name="cpf" onChange={handleOnChangeInput} />
             <Input
               type="password"
@@ -75,10 +74,9 @@ const Login = () => {
                 Não tem uma conta ainda? <Link to="/cadastro">Cadastre-se</Link>
               </span>
             </div>
-          </form>
-        </div>
-      </div>
-    </div>
+          </Form>
+      </FormContainer>
+    </Container>
   );
 };
 
