@@ -23,6 +23,9 @@ export const ImageContainer = styled.div`
     width:70%;
     height:100%;
     display:none;   
+    box-shadow:0 0 5px 0 #000;
+    border-top-left-radius:.3rem;
+    border-bottom-left-radius:.3rem; 
 
     img{
         width:100%;
