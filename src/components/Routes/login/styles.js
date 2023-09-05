@@ -1,38 +1,86 @@
 import styled from "styled-components";
-import { colors } from "../../../GlobalStyles/styles-variables";
+import { colors,breakpoints } from "../../../GlobalStyles/styles-variables";
 
 export const Container = styled.main`
     width:100%;
-    min-height:90vh;
+    min-height:100vh;
     height:100%;
+    padding:1rem;
 
     display:flex;
     align-items:center;
     justify-content:center;
     flex-direction:column;
+
+    @media(min-width: ${breakpoints.xl}){
+        height:100vh;
+        padding:2rem;
+        flex-direction:row;
+    }
 ` 
 
 export const ImageContainer = styled.div`
+    width:70%;
+    height:100%;
+    display:none;   
+
+    img{
+        width:100%;
+        height:100%;
+        border-top-left-radius:.3rem;
+        border-bottom-left-radius:.3rem; 
+    }
+
+    @media(min-width: ${breakpoints.xl}){
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
 `
 
 export const FormContainer = styled.div`
     width:95%;
-    gap:1rem;
-    border:1px solid ${colors.darkBlue};
-    box-shadow:0 0 10px 0 ${colors.lightBlue};
-    border-radius:.3rem;
-    height:100;
+    height:100%;
     padding:3rem;
 
+    gap:1rem;
+    
     display:flex;
     flex-direction:column;
     align-items:flex-start;
     justify-content:center;
 
+    
+    /* border:1px solid ${colors.darkBlue}; */
+    border-radius:.3rem; 
+
+    box-shadow:0 0 5px 0 #000;
+
     h1{
         font-size:2rem;
         font-family:"Roboto", sans-serif;
         color:${colors.darkBlue};
+    }
+
+    @media(min-width: ${breakpoints.md}){
+        width:70%
+    }
+
+    @media(min-width: ${breakpoints.lg}){
+        width:50%
+    }
+
+    @media(min-width: ${breakpoints.xl}){
+       width:50%;
+       border-top-right-radius:.3rem;
+       border-bottom-right-radius:.3rem;
+       border-bottom-left-radius:0;
+       border-top-left-radius:0;
+
+       h1{
+        font-size:2.5rem;
+       }
+
     }
 `
 

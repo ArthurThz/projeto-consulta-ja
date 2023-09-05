@@ -6,9 +6,11 @@ import { useState, useContext } from "react";
 import { userContext } from "../../../Context/UserContext";
 import { isLoggedContext } from "../../../Context/IsLoggedContext";
 import { apiRoute } from "../../../services/api";
-import { Container, Form, FormContainer, Row } from "./styles";
+import { Container, Form, FormContainer, ImageContainer, Row } from "./styles";
 import Button from "../../Layout/Button/button";
 import Input from "../../Layout/Input/input";
+
+import loginImage from '../../../assets/image/login_image2.jpg'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -44,34 +46,40 @@ const Login = () => {
 
   return (
     <Container>
+      <ImageContainer>
+          <img src={loginImage} alt="imagem de login" />
+        </ImageContainer>
       <FormContainer>
-        <h1>Login</h1>
-          <Form onSubmit={handleOnSubmit}>
-            <Input type="text" name="cpf" onChange={handleOnChangeInput} />
-            <Input
-              type="password"
-              name="senha"
-              onChange={handleOnChangeInput}
-            />          
-              <Row>
-                <input type="checkbox" name="rememberUser" id="rememberUser" />
-                <label htmlFor="rememberUser">Lembrar de mim</label>
-              </Row>
+        <h1>Entrar</h1>
+        
+        <Form onSubmit={handleOnSubmit}>
+          <Input type="text" name="cpf" onChange={handleOnChangeInput} />
+          <Input type="password" name="senha" onChange={handleOnChangeInput} />
+          <Row>
+            <input type="checkbox" name="rememberUser" id="rememberUser" />
+            <label htmlFor="rememberUser">Lembrar de mim</label>
+          </Row>
 
-              <Row>
-                <a href="" className="forgot-password">
-                  esqueceu a senha?
-                </a>
-              </Row>
+          <Row>
+            <a href="" className="forgot-password">
+              esqueceu a senha?
+            </a>
+          </Row>
 
-              <Button children="Confirmar" onClick={handleOnSubmit} type="submit"/>          
+          
+            <Button
+              children="Confirmar"
+              onClick={handleOnSubmit}
+              type="submit"
+            />
+          
 
-            <Row>
-              <span>
-                Não tem uma conta ainda? <Link to="/cadastro">Cadastre-se</Link>
-              </span>
-            </Row>
-          </Form>
+          <Row>
+            <span>
+              Não tem uma conta ainda? <Link to="/cadastro">Cadastre-se</Link>
+            </span>
+          </Row>
+        </Form>
       </FormContainer>
     </Container>
   );
