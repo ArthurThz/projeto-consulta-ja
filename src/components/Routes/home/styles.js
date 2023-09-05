@@ -112,7 +112,7 @@ export const Presentation = styled.div`
     div {
       gap: 2.5rem;
       h2 {
-        font-size: 2rem;
+        font-size: 3rem;
       }
       p {
         font-size: 1.3rem;

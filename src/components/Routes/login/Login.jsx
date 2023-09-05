@@ -6,8 +6,8 @@ import { useState, useContext } from "react";
 import { userContext } from "../../../Context/UserContext";
 import { isLoggedContext } from "../../../Context/IsLoggedContext";
 import { apiRoute } from "../../../services/api";
-import { Container, Form, FormContainer } from "./styles";
-
+import { Container, Form, FormContainer, Row } from "./styles";
+import Button from "../../Layout/Button/button";
 import Input from "../../Layout/Input/input";
 
 const Login = () => {
@@ -52,28 +52,25 @@ const Login = () => {
               type="password"
               name="senha"
               onChange={handleOnChangeInput}
-            />
-
-            <div className="control-input-options">
-              <section>
+            />          
+              <Row>
                 <input type="checkbox" name="rememberUser" id="rememberUser" />
                 <label htmlFor="rememberUser">Lembrar de mim</label>
-              </section>
+              </Row>
 
-              <section>
+              <Row>
                 <a href="" className="forgot-password">
                   esqueceu a senha?
                 </a>
-              </section>
-            </div>
+              </Row>
 
-            <input className="button" type="submit" value="Entrar" />
+              <Button children="Confirmar" onClick={handleOnSubmit} type="submit"/>          
 
-            <div className="sign-up">
+            <Row>
               <span>
                 Não tem uma conta ainda? <Link to="/cadastro">Cadastre-se</Link>
               </span>
-            </div>
+            </Row>
           </Form>
       </FormContainer>
     </Container>

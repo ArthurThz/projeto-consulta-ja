@@ -6,8 +6,6 @@ export const Container = styled.main`
     min-height:90vh;
     height:100%;
 
-    border:1px solid black;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -18,11 +16,13 @@ export const ImageContainer = styled.div`
 `
 
 export const FormContainer = styled.div`
-    width:auto;
+    width:95%;
     gap:1rem;
-    border:1px solid black;
+    border:1px solid ${colors.darkBlue};
+    box-shadow:0 0 10px 0 ${colors.lightBlue};
+    border-radius:.3rem;
     height:100;
-    padding:1rem;
+    padding:3rem;
 
     display:flex;
     flex-direction:column;
@@ -45,4 +45,16 @@ export const Form = styled.form`
     width:100%;
     height:100%;
     gap:1rem;
+
+    button{
+        width:100%;
+    }
+`
+
+export const Row = styled.div`
+    width:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 0.5rem;
 `
