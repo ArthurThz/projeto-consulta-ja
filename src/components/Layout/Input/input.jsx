@@ -1,11 +1,11 @@
-import "./input.styles.scss";
+import { InputContainer, InputStyled, LabelStyled } from "./styles";
 
 const Input = ({ name, type, onChange }) => {
   return (
-    <div className="input-container">
-      <label htmlFor={name}>{name}</label>
-      <input name={name} id={name} onChange={onChange} type={type} />
-    </div>
+    <InputContainer>
+      <LabelStyled htmlFor={name}>{name}</LabelStyled>
+      <InputStyled name={name} id={name} onChange={onChange} type={type} />
+    </InputContainer>
   );
 };
 

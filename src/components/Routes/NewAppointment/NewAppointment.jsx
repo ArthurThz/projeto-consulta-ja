@@ -1,5 +1,3 @@
-
-
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +12,8 @@ import Input from "../../Layout/Input/input";
 const NewAppointment = () => {
   const [Specialty, setSpecialty] = useState([]);
   const { setIdAppointment } = useContext(appointmentContext);
-  const [filteredSpecialty, setFilteredSpecialty] = useState([]);
+  const [filteredSpecialty, setFilteredSpecialty] = useState(Specialty);
+  const [searchSpecialty, setSearchSpecialty] = useState("");
 
   const navigate = useNavigate();
 
@@ -24,17 +23,18 @@ const NewAppointment = () => {
       setSpecialty(data);
     });
   }, []);
-  
-  
-  const filterSpecialty = (event) => {
-      const {value} = event.target;
-      let filteredSpecialty = Specialty.filter((item) =>{
-        return item.nome_especialidade.toLowerCase().includes(value)
-      })
 
-      setFilteredSpecialty(filteredSpecialty)
-      console.log(value)
-  }
+  useEffect(() => {
+    let filteredSpecialty = Specialty.filter((item) => {
+      return item.nome_especialidade.toLowerCase().includes(searchSpecialty);
+    });
+    setFilteredSpecialty(filteredSpecialty);
+  }, [Specialty, searchSpecialty]);
+
+  const handleSearchSpecialty = (event) => {
+    const { value } = event.target;
+    setSearchSpecialty(value.toLowerCase());
+  };
 
   const orderedSpecialty = Specialty.sort((x, y) => {
     let a = x.nome_especialidade;
@@ -46,8 +46,12 @@ const NewAppointment = () => {
   return (
     <Container>
       <h1>Selecione uma especialidade</h1>
-      <Input type="text" name="Buscar Especialidade" onChange={filterSpecialty} />
-      {Specialty.map((item) => {
+      <Input
+        type="text"
+        name="Buscar Especialidade"
+        onChange={handleSearchSpecialty}
+      />
+      {filteredSpecialty.map((item) => {
         return (
           <ItemContainer
             key={item.id}
