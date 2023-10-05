@@ -1,12 +1,14 @@
 import "./DoctorCard.styles.scss";
 
 import DropDownMenu from "../Layout/DropDownMenu/Menu";
+import Button from "../Layout/Button/button";
 
 import { useState, useEffect, useContext } from "react";
 import { userContext } from "../../Context/UserContext";
 
 import { useNavigate } from "react-router-dom";
 import { appointmentContext } from "../../Context/AppointmentContext";
+import { Container, Card } from "./styles";
 
 import { apiRoute } from "../../services/api";
 const DoctorCard = () => {
@@ -68,29 +70,30 @@ const DoctorCard = () => {
   };
 
   return (
-    <div className="doctors-container">
-      {Doctors.map((item) => {
-        return (
-          <div key={item.id} className="card-doctors">
-            <h2 className="doctor-name">{item.nome_doutor}</h2>
-            <span className="specialty">{specialty.nome_especialidade}</span>
-            <DropDownMenu doctorId={item.id} />
-            <button
-              className="confirm-btn"
-              onClick={() =>
-                confirmAppointment(
-                  item.id,
-                  item.nome_doutor,
-                  specialty.nome_especialidade
-                )
-              }
-            >
-              Confirmar
-            </button>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <Container>
+        {Doctors.map((item) => {
+          return (
+            <Card>
+              <h2 className="doctor-name">{item.nome_doutor}</h2>
+              <span className="specialty">{specialty.nome_especialidade}</span>
+              <DropDownMenu doctorId={item.id} />
+              <Button
+                onClick={() =>
+                  confirmAppointment(
+                    item.id,
+                    item.nome_doutor,
+                    specialty.nome_especialidade
+                  )
+                }
+              >
+                Confirmar
+              </Button>
+            </Card>
+          );
+        })}
+      </Container>
+    </>
   );
 };
 

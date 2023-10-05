@@ -2,13 +2,15 @@ import styled from "styled-components";
 
 export const InputContainer = styled.div`
   min-width: 250px;
+  max-width: 100%;
+  width: 100%;
   height: auto;
   position: relative;
 `;
 
 export const InputStyled = styled.input`
   width: 100%;
-  height: 100%;
+  height: 80%;
   border-radius: 2rem;
   border: 1px solid rgb(66, 66, 66);
   outline: none;
@@ -16,11 +18,13 @@ export const InputStyled = styled.input`
 
   font-size: 1em;
   font-family: "Poppins", sans-serif;
+  opacity: 0.4;
 
   &:focus {
     outline: auto;
     outline-color: #413eddbe;
     box-shadow: 0 0 6px 0 #413edd;
+    opacity: 1;
   }
 `;
 

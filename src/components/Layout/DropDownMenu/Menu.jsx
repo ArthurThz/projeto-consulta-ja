@@ -1,7 +1,7 @@
 import "./Menu.styles.scss";
 
 import { useState, useEffect, useContext } from "react";
-
+import Arrow from "../../../assets/icon/arrowdown.svg";
 import { apiRoute } from "../../../services/api";
 
 import { appointmentContext } from "../../../Context/AppointmentContext";
@@ -42,7 +42,7 @@ const DropDownMenu = ({ doctorId }) => {
     <div className="menu-container">
       <div className="title" onClick={handleMenu}>
         <p>{option}</p>
-        <p>icon</p>
+        <img src={Arrow} alt="arrow icon" />
       </div>
       {menuIsOpen === true ? (
         <div className="menu">

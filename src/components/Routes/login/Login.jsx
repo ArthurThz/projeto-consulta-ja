@@ -1,5 +1,3 @@
-
-
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 
@@ -10,7 +8,7 @@ import { Container, Form, FormContainer, ImageContainer, Row } from "./styles";
 import Button from "../../Layout/Button/button";
 import Input from "../../Layout/Input/input";
 
-import loginImage from '../../../assets/image/login_image2.jpg'
+import loginImage from "../../../assets/image/login_image2.jpg";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,7 +26,7 @@ const Login = () => {
     event.preventDefault();
     try {
       const { data } = await apiRoute.get(
-        `/users?cpf=eq.${inputData.cpf}&select=*&senha=eq.${inputData.senha}&select=*`
+        `/users?cpf=eq.${inputData.CPF}&select=*&senha=eq.${inputData.Senha}&select=*`
       );
 
       if (data.length !== 1) {
@@ -47,14 +45,14 @@ const Login = () => {
   return (
     <Container>
       <ImageContainer>
-          <img src={loginImage} alt="imagem de login" />
-        </ImageContainer>
+        <img src={loginImage} alt="imagem de login" />
+      </ImageContainer>
       <FormContainer>
         <h1>Entrar</h1>
-        
+
         <Form onSubmit={handleOnSubmit}>
-          <Input type="text" name="cpf" onChange={handleOnChangeInput} />
-          <Input type="password" name="senha" onChange={handleOnChangeInput} />
+          <Input type="text" name="CPF" onChange={handleOnChangeInput} />
+          <Input type="password" name="Senha" onChange={handleOnChangeInput} />
           <Row>
             <input type="checkbox" name="rememberUser" id="rememberUser" />
             <label htmlFor="rememberUser">Lembrar de mim</label>
@@ -66,13 +64,7 @@ const Login = () => {
             </a>
           </Row>
 
-          
-            <Button
-              children="Confirmar"
-              onClick={handleOnSubmit}
-              type="submit"
-            />
-          
+          <Button children="Confirmar" onClick={handleOnSubmit} type="submit" />
 
           <Row>
             <span>

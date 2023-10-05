@@ -12,16 +12,21 @@
 
   border: 1px solid gray;
 
-  color: #fff;
+  color: #000;
 
   border-radius: 0.5rem;
 
   .title {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
-    font-size: 1rem;
+    align-items: center;
+    gap:2rem;
+    font-size: .9rem;
     cursor: pointer;
+    img{
+      height:90%;
+      width:10%;
+    }
   }
 
   .menu {
@@ -52,9 +57,9 @@
         gap: 1rem;
 
         cursor: pointer;
-
+        color:#FFF;
         transition: all 0.5s ease-out;
-
+        font-size: .9rem;
         border-bottom: 1px solid #03196105;
 
         &:hover {
