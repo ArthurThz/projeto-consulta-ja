@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../GlobalStyles/styles-variables";
+import { breakpoints, colors } from "../../GlobalStyles/styles-variables";
 
 export const Container = styled.div`
   width: 100%;
@@ -8,13 +8,19 @@ export const Container = styled.div`
   padding: 2rem 1rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   gap: 1.3rem;
+
+  @media (min-width: ${breakpoints.md}) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 `;
 
 export const Card = styled.div`
   height: 400px;
-  width: 70%;
+
   position: relative;
   border: 1px solid black;
 
@@ -33,8 +39,17 @@ export const Card = styled.div`
   box-shadow: 0 0 8px 0 ${colors.darkBlue};
   outline: none;
 
+  h2 {
+    font-size: 1.4rem;
+  }
+
   &:hover {
     outline: 1px solid black;
     box-shadow: 0 0 10px 0 ${colors.darkBlue};
+  }
+
+  @media (min-width: ${breakpoints.sm}) {
+    max-width: 350px;
+    width: 75%;
   }
 `;

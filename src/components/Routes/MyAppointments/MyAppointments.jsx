@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 import { apiRoute } from "../../../services/api";
 
+import { Container } from "./styles";
+
 const MyAppointments = () => {
   const navigate = useNavigate();
   const [Consultation, setConsultation] = useState([]);
@@ -41,7 +43,7 @@ const MyAppointments = () => {
   };
 
   return (
-    <div className="my-consultation-container">
+    <Container>
       <h1>Minhas consultas</h1>
       <div className="slider">
         {Consultation.length > 0 ? (
@@ -87,7 +89,7 @@ const MyAppointments = () => {
           </>
         )}
       </div>
-    </div>
+    </Container>
   );
 };
 

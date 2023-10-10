@@ -75,7 +75,7 @@ const DoctorCard = () => {
         {Doctors.map((item) => {
           return (
             <Card>
-              <h2 className="doctor-name">{item.nome_doutor}</h2>
+              <h2 className="doctor-name">Dr(a) {item.nome_doutor}</h2>
               <span className="specialty">{specialty.nome_especialidade}</span>
               <DropDownMenu doctorId={item.id} />
               <Button
