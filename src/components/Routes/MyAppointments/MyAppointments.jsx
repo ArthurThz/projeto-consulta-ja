@@ -5,8 +5,8 @@ import { userContext } from "../../../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 import { apiRoute } from "../../../services/api";
-
-import { Container } from "./styles";
+import Button from "../../Layout/Button/button";
+import { Container, Card, Group } from "./styles";
 
 const MyAppointments = () => {
   const navigate = useNavigate();
@@ -45,50 +45,41 @@ const MyAppointments = () => {
   return (
     <Container>
       <h1>Minhas consultas</h1>
-      <div className="slider">
-        {Consultation.length > 0 ? (
-          <>
-            {Consultation.map((consulta) => {
-              return (
-                <div key={consulta.id} className="info">
-                  <div className="consultation">
-                    <h3 className="doctor">{`Dr(a): ${consulta.nome_medico}`}</h3>
-                    <span className="specialty">{`Especialidade: ${consulta.especialidade}`}</span>
-                    <div className="appointment-info">
-                      <span>Data: {consulta.data}</span>
-                      <span>Hora: {consulta.hora}</span>
-                    </div>
-                  </div>
-                  <div className="options">
-                    <button className="call">Ligar</button>
-                    <button
-                      onClick={() =>
-                        deleteAppointment(
-                          consulta.id,
-                          consulta.data,
-                          consulta.hora
-                        )
-                      }
-                      className="mark-off"
-                    >
-                      Desmarcar
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </>
-        ) : (
-          <>
-            <div className="empty-appointment">
-              <h2>Parece que você ainda não marcou nenhuma consulta</h2>
-              <a onClick={() => navigate("/novaconsulta")}>
-                Clique aqui e marque uma agora mesmo
-              </a>
-            </div>
-          </>
-        )}
-      </div>
+      {Consultation.length > 0 ? (
+        <>
+          {Consultation.map((consulta) => {
+            const { id, data, hora, nome_medico, especialidade } = consulta;
+            return (
+              <Card key={id}>
+                <h2 className="doctor">{`Dr(a): ${nome_medico}`}</h2>
+                <span className="specialty">{`Especialidade: ${especialidade}`}</span>
+                <Group>
+                  <span>Data: {data}</span>
+                  <span>Hora: {hora}</span>
+                </Group>
+                <Group>
+                  <Button className="call">Ligar</Button>
+                  <Button
+                    onClick={() => deleteAppointment(id, data, hora)}
+                    className="mark-off"
+                  >
+                    Desmarcar
+                  </Button>
+                </Group>
+              </Card>
+            );
+          })}
+        </>
+      ) : (
+        <>
+          <div className="empty-appointment">
+            <h2>Parece que você ainda não marcou nenhuma consulta</h2>
+            <a onClick={() => navigate("/novaconsulta")}>
+              Clique aqui e marque uma agora mesmo
+            </a>
+          </div>
+        </>
+      )}
     </Container>
   );
 };
