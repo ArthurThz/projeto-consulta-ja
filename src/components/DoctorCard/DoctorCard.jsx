@@ -1,5 +1,3 @@
-import "./DoctorCard.styles.scss";
-
 import DropDownMenu from "../Layout/DropDownMenu/Menu";
 import Button from "../Layout/Button/button";
 

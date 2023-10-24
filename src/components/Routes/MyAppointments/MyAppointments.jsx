@@ -1,5 +1,3 @@
-import "./MyAppointments.styles.scss";
-
 import { useState, useEffect, useContext } from "react";
 import { userContext } from "../../../Context/UserContext";
 import { useNavigate } from "react-router-dom";
