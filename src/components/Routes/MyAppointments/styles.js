@@ -59,3 +59,19 @@ export const Group = styled.div`
 
   padding: 0.4rem 0;
 `;
+
+export const EmptyAppointments = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+export const BtnNewAppointment = styled.button`
+  width: 200px;
+  height: 40px;
+
+  background-color: ${colors.darkBlue};
+  color: #fff;
+`;
