@@ -15,10 +15,13 @@ export const Container = styled.div`
 
   h1 {
     font-size: 1.5rem;
+    color: ${colors.darkBlue};
   }
 
-  h2 {
-    font-size: 1.3rem;
+  @media (min-width: ${breakpoints.md}) {
+    h1 {
+      font-size: 1.8rem;
+    }
   }
 `;
 
@@ -58,6 +61,10 @@ export const Group = styled.div`
   gap: 1rem;
 
   padding: 0.4rem 0;
+
+  button {
+    width: 100%;
+  }
 `;
 
 export const EmptyAppointments = styled.div`
@@ -66,6 +73,18 @@ export const EmptyAppointments = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 1rem;
+  text-align: center;
+
+  h2 {
+    color: ${colors.darkBlue};
+  }
+
+  @media (min-width: ${breakpoints.md}) {
+    font-size: 1.2rem;
+    h2 {
+      font-size: 1.6rem;
+    }
+  }
 `;
 
 export const BtnNewAppointment = styled.button`

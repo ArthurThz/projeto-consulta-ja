@@ -62,12 +62,11 @@ const MyAppointments = () => {
                   <span>Hora: {hora}</span>
                 </Group>
                 <Group>
-                  <Button className="call">Ligar</Button>
                   <Button
                     onClick={() => deleteAppointment(id, data, hora)}
                     className="mark-off"
                   >
-                    Desmarcar
+                    Cancelar Agendamento
                   </Button>
                 </Group>
               </Card>
@@ -78,8 +77,10 @@ const MyAppointments = () => {
         <>
           <EmptyAppointments>
             <h2>Parece que você ainda não marcou nenhuma consulta</h2>
-            <p>Clique aqui e marque uma agora mesmo</p>
-            <BtnNewAppointment>Nova Consulta</BtnNewAppointment>
+            <p>Clique no botão e marque uma consulta agora mesmo!!</p>
+            <BtnNewAppointment onClick={() => navigate("/novaconsulta")}>
+              Nova Consulta
+            </BtnNewAppointment>
           </EmptyAppointments>
         </>
       )}
