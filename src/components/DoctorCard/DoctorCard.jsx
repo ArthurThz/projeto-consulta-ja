@@ -71,18 +71,16 @@ const DoctorCard = () => {
     <>
       <Container>
         {Doctors.map((item) => {
+          const { nome_doutor, id } = item;
+          const nomeEspecialidade = specialty.nome_especialidade;
           return (
             <Card>
-              <h2 className="doctor-name">Dr(a) {item.nome_doutor}</h2>
-              <span className="specialty">{specialty.nome_especialidade}</span>
-              <DropDownMenu doctorId={item.id} />
+              <h2 className="doctor-name">Dr(a) {nome_doutor}</h2>
+              <span className="specialty">{nomeEspecialidade}</span>
+              <DropDownMenu doctorId={id} />
               <Button
                 onClick={() =>
-                  confirmAppointment(
-                    item.id,
-                    item.nome_doutor,
-                    specialty.nome_especialidade
-                  )
+                  confirmAppointment(id, nome_doutor, nomeEspecialidade)
                 }
               >
                 Confirmar
