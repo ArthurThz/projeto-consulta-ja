@@ -8,16 +8,19 @@ import { AppointmentProvider } from "./Context/AppointmentContext";
 
 import { UserProvider } from "./Context/UserContext";
 import { LoginProvider } from "./Context/IsLoggedContext";
+import { ToggleMenuProvider } from "./Context/toggleMenuContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
   <LoginProvider>
-    <UserProvider>
-      <AppointmentProvider>
-        <GlobalStyle />
-        <App />
-      </AppointmentProvider>
-    </UserProvider>
+    <ToggleMenuProvider>
+      <UserProvider>
+        <AppointmentProvider>
+          <GlobalStyle />
+          <App />
+        </AppointmentProvider>
+      </UserProvider>
+    </ToggleMenuProvider>
   </LoginProvider>
   // {/* </React.StrictMode> */}
 );
