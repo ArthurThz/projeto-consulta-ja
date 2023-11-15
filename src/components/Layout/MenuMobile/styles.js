@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import { colors } from "../../../GlobalStyles/styles-variables";
 
 export const Container = styled.div`
   width: 100%;
   min-height: 84vh;
   height: 100%;
-  border: 1px solid black;
 
   padding: 4rem 3rem;
 `;
@@ -25,4 +25,7 @@ export const List = styled.ul`
 export const Item = styled.li`
   font-size: 1.2rem;
   font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: ${colors.darkBlue};
+  cursor: pointer;
 `;
