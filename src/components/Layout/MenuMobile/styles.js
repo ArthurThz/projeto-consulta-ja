@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../../GlobalStyles/styles-variables";
+import { breakpoints, colors } from "../../../GlobalStyles/styles-variables";
 
 export const Container = styled.div`
   width: 100%;

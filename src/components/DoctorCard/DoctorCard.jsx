@@ -79,6 +79,7 @@ const DoctorCard = () => {
               <span className="specialty">{nomeEspecialidade}</span>
               <DropDownMenu doctorId={id} />
               <Button
+                label="Confirmar"
                 onClick={() =>
                   confirmAppointment(id, nome_doutor, nomeEspecialidade)
                 }
