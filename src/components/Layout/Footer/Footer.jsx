@@ -1,5 +1,3 @@
-import "./Footer.styles.scss";
-
 // React icons
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { SlEnvolope, SlPhone } from "react-icons/sl";

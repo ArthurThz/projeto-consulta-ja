@@ -14,6 +14,8 @@ import fisioterapia from "../../../assets/icon/fisio.png";
 import oftalmo from "../../../assets/icon/oftalmologia.svg";
 import dermatologia from "../../../assets/icon/dermato.png";
 
+import Button from "../../Layout/Button/button";
+
 //Styles
 import {
   Container,
@@ -44,7 +46,11 @@ const Home = () => {
             proporcianar uma experiência rápida e eficaz para suas consultas.
           </p>
           <p>Cadastre-se para ter acesso aos nossos serviços.</p>
-          <button onClick={() => navigate("/cadastro")}>Fazer Cadastro</button>
+          <Button
+            variant="secondary"
+            onClick={() => navigate("/cadastro")}
+            label="Fazer Cadastro"
+          />
         </div>
         <img src={doctorsImg} alt="doctors icon" />
       </Presentation>

@@ -19,17 +19,16 @@ export const Title = styled.h2`
 `;
 
 export const SocialMedia = styled.div`
-  width: 100%;
+  /* width: 100%; */
   padding: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   gap: 1rem;
 `;
 
 export const SocialMediaLinks = styled.a`
-  width: 220px;
-  padding: 0.6rem 0.2rem;
+  padding: 0.6rem 1rem;
   display: flex;
   align-items: center;
   border: 2px solid ${colors.lightBlue};
@@ -39,7 +38,7 @@ export const SocialMediaLinks = styled.a`
 
   border-radius: 2rem;
   color: ${colors.textGray};
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   transition: 0.3s ease all;
   &:hover {
     background-color: ${colors.lightBlue};
@@ -61,6 +60,7 @@ export const ContactItem = styled.div`
   align-items: center;
   gap: 0.8rem;
   color: ${colors.textGray};
+  font-size: 0.9rem;
 `;
 
 export const Copyright = styled.span`

@@ -1,7 +1,11 @@
-import "./button.styles.scss";
+import { Container } from "./styles";
 
-const Button = ({ children, type, onClick }) => {
-  return <button onClick={onClick} type={type}>{children}</button>;
+const Button = ({ onClick, label, variant = "primary" }) => {
+  return (
+    <Container variant={variant} onClick={onClick}>
+      {label}
+    </Container>
+  );
 };
 
 export default Button;

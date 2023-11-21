@@ -105,7 +105,7 @@ const SignUp = () => {
                 type="password"
               />
             </div>
-            <Button type="submit" children="Confirmar" />
+            <Button label="Confirmar" />
           </form>
         </div>
       </main>

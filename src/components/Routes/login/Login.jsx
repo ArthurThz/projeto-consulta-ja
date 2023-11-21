@@ -64,7 +64,7 @@ const Login = () => {
             </a>
           </Row>
 
-          <Button children="Confirmar" onClick={handleOnSubmit} type="submit" />
+          <Button label="Confirmar" onClick={handleOnSubmit} type="submit" />
 
           <Row>
             <span>

@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 import { breakpoints, colors } from "../../../GlobalStyles/styles-variables";
 
 export const Container = styled.main`
-  background-color: ${colors.background};
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -13,12 +12,6 @@ export const Container = styled.main`
   align-items: center;
   justify-content: center;
   gap: 3rem;
-
-  /* @media (min-width: ${breakpoints.lg}) {
-  } */
-
-  /* @media (min-width: ${breakpoints.xl}) {
-  } */
 `;
 
 export const Presentation = styled.div`
@@ -46,12 +39,6 @@ export const Presentation = styled.div`
       font-size: 1rem;
       text-align: justify;
     }
-
-    button {
-      width: 100%;
-      border-radius: 100px;
-      background-color: ${colors.darkBlue};
-    }
   }
   img {
     width: 80%;
@@ -68,10 +55,6 @@ export const Presentation = styled.div`
       p {
         font-size: 1.2rem;
         letter-spacing: 0.8px;
-      }
-
-      button {
-        width: 200px;
       }
     }
 
@@ -99,11 +82,6 @@ export const Presentation = styled.div`
 
       p {
         font-size: 1rem;
-      }
-
-      button {
-        width: 180px;
-        font-size: 0.9rem;
       }
     }
   }
