@@ -78,9 +78,13 @@ const MyAppointments = () => {
           <EmptyAppointments>
             <h2>Parece que você ainda não marcou nenhuma consulta</h2>
             <p>Clique no botão e marque uma consulta agora mesmo!!</p>
-            <BtnNewAppointment onClick={() => navigate("/novaconsulta")}>
+            <Button
+              label="Nova Consulta"
+              variant="secondary"
+              onClick={() => navigate("/novaconsulta")}
+            >
               Nova Consulta
-            </BtnNewAppointment>
+            </Button>
           </EmptyAppointments>
         </>
       )}

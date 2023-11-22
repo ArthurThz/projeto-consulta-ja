@@ -28,7 +28,6 @@ export const Container = styled.button`
   &:hover {
     background-color: ${colors.darkBlue};
     color: #fff;
-    opacity: ${({ variant }) => (variant === "primary" ? ".8" : "1")};
 
     &::after {
       content: ${({ variant }) => (variant === "primary" ? "''" : "")};
@@ -41,6 +40,8 @@ export const Container = styled.button`
   }
 
   @media (min-width: ${breakpoints.md}) {
+    min-width: 140px;
     width: 30%;
+    font-size: 1rem;
   }
 `;
