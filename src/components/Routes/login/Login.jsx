@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import { userContext } from "../../../Context/UserContext";
 import { isLoggedContext } from "../../../Context/IsLoggedContext";
 import { apiRoute } from "../../../services/api";
-import { Container, Form, FormContainer, ImageContainer, Row } from "./styles";
+import { Container, Title, FormContainer, Formulario } from "./styles";
 import Button from "../../Layout/Button/button";
 import Input from "../../Layout/Input/input";
 
@@ -44,34 +44,13 @@ const Login = () => {
 
   return (
     <Container>
-      <ImageContainer>
-        <img src={loginImage} alt="imagem de login" />
-      </ImageContainer>
+      <Title>Entrar</Title>
       <FormContainer>
-        <h1>Entrar</h1>
-
-        <Form onSubmit={handleOnSubmit}>
-          <Input type="text" name="CPF" onChange={handleOnChangeInput} />
-          <Input type="password" name="Senha" onChange={handleOnChangeInput} />
-          <Row>
-            <input type="checkbox" name="rememberUser" id="rememberUser" />
-            <label htmlFor="rememberUser">Lembrar de mim</label>
-          </Row>
-
-          <Row>
-            <a href="" className="forgot-password">
-              esqueceu a senha?
-            </a>
-          </Row>
-
-          <Button label="Confirmar" onClick={handleOnSubmit} type="submit" />
-
-          <Row>
-            <span>
-              Não tem uma conta ainda? <Link to="/cadastro">Cadastre-se</Link>
-            </span>
-          </Row>
-        </Form>
+        <Formulario onSubmit={handleOnSubmit}>
+          <Input name="CPF" onChange={handleOnChangeInput} type="text" />
+          <Input name="Senha" type="password" onChange={handleOnChangeInput} />
+          <Button label="Entrar" type="submit" />
+        </Formulario>
       </FormContainer>
     </Container>
   );

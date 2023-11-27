@@ -4,13 +4,13 @@ export const InputContainer = styled.div`
   min-width: 250px;
   max-width: 100%;
   width: 100%;
-  height: auto;
+  height: 80px;
   position: relative;
 `;
 
 export const InputStyled = styled.input`
   width: 100%;
-  height: 80%;
+  height: 60%;
   border-radius: 2rem;
   border: 1px solid rgb(66, 66, 66);
   outline: none;
