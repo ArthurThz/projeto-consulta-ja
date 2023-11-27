@@ -17,14 +17,21 @@ export const Logo = styled.div`
   align-items: center;
   gap: 0.2rem;
   cursor: pointer;
+  color: ${colors.darkBlue};
 
   h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   img {
     width: 80px;
     height: 60px;
+  }
+
+  @media (min-width: ${breakpoints.md}) {
+    h1 {
+      font-size: 1.8rem;
+    }
   }
 `;
 

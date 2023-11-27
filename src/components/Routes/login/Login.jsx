@@ -4,7 +4,14 @@ import { useState, useContext } from "react";
 import { userContext } from "../../../Context/UserContext";
 import { isLoggedContext } from "../../../Context/IsLoggedContext";
 import { apiRoute } from "../../../services/api";
-import { Container, Title, FormContainer, Formulario } from "./styles";
+import {
+  Container,
+  Title,
+  FormContainer,
+  Formulario,
+  Paragraph,
+  SignUpLink,
+} from "./styles";
 import Button from "../../Layout/Button/button";
 import Input from "../../Layout/Input/input";
 
@@ -49,6 +56,13 @@ const Login = () => {
         <Formulario onSubmit={handleOnSubmit}>
           <Input name="CPF" onChange={handleOnChangeInput} type="text" />
           <Input name="Senha" type="password" onChange={handleOnChangeInput} />
+          <Paragraph>
+            Ainda não possui uma conta?{" "}
+            <SignUpLink onClick={() => navigate("/cadastro")}>
+              Clique Aqui
+            </SignUpLink>{" "}
+            e faça já o seu cadastro.
+          </Paragraph>
           <Button label="Entrar" type="submit" />
         </Formulario>
       </FormContainer>

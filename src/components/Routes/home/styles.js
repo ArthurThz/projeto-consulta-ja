@@ -141,7 +141,7 @@ export const DataItem = styled.div`
   justify-content: center;
 
   p {
-    font-size: 0.5rem;
+    font-size: 0.4rem;
   }
 
   @media (min-width: ${breakpoints.md}) {

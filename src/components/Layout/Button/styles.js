@@ -17,7 +17,8 @@ export const Container = styled.button`
     variant === "primary" ? "#FFF" : `${colors.darkBlue}`};
   font-family: "Poppins", sans-serif;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
+  text-align: center;
 
   cursor: pointer;
 
