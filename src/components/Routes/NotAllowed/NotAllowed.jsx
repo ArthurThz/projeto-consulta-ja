@@ -1,23 +1,21 @@
-import "./NotAllowed.styles.scss";
 import { useNavigate } from "react-router-dom";
-
+import Button from "../../Layout/Button/button";
+import { Container, Image, Message, Text, Title } from "./styles";
 import unauthorizedImg from "../../../assets/image/unauthorized.svg";
 const NotAllowed = () => {
   const navigate = useNavigate();
   return (
-    <div className="not-allowed-container">
-      <div className="hero">
-        <h1>Atenção!!</h1>
-
-        <p>
+    <Container>
+      <Title>Atenção!!</Title>
+      <Message>
+        <Text>
           Você não tem permissão para acessar esta área, faça login para
           continuar.
-        </p>
-        <button onClick={() => navigate("/login")}>Fazer Login</button>
-      </div>
-
-      <img src={unauthorizedImg} alt="not allowed image" />
-    </div>
+        </Text>
+        <Image src={unauthorizedImg} alt="not allowed image" />
+      </Message>
+      <Button label="Fazer Login" onClick={() => navigate("/login")} />
+    </Container>
   );
 };
 

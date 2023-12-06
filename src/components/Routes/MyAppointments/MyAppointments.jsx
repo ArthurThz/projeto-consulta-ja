@@ -4,7 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 import { apiRoute } from "../../../services/api";
 import Button from "../../Layout/Button/button";
-import { Container, Card, Group } from "./styles";
+import {
+  Container,
+  Card,
+  Group,
+  BtnNewAppointment,
+  EmptyAppointments,
+} from "./styles";
 
 const MyAppointments = () => {
   const navigate = useNavigate();
@@ -56,13 +62,11 @@ const MyAppointments = () => {
                   <span>Hora: {hora}</span>
                 </Group>
                 <Group>
-                  <Button className="call">Ligar</Button>
                   <Button
                     onClick={() => deleteAppointment(id, data, hora)}
                     className="mark-off"
-                  >
-                    Desmarcar
-                  </Button>
+                    label="Cancelar Agendamento"
+                  />
                 </Group>
               </Card>
             );
@@ -70,12 +74,17 @@ const MyAppointments = () => {
         </>
       ) : (
         <>
-          <div className="empty-appointment">
+          <EmptyAppointments>
             <h2>Parece que você ainda não marcou nenhuma consulta</h2>
-            <a onClick={() => navigate("/novaconsulta")}>
-              Clique aqui e marque uma agora mesmo
-            </a>
-          </div>
+            <p>Clique no botão e marque uma consulta agora mesmo!!</p>
+            <Button
+              label="Nova Consulta"
+              variant="secondary"
+              onClick={() => navigate("/novaconsulta")}
+            >
+              Nova Consulta
+            </Button>
+          </EmptyAppointments>
         </>
       )}
     </Container>

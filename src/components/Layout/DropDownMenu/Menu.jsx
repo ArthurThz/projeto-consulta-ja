@@ -1,22 +1,14 @@
-import "./Menu.styles.scss";
-
 import { useState, useEffect, useContext } from "react";
-import Arrow from "../../../assets/icon/arrowdown.svg";
 import { apiRoute } from "../../../services/api";
 
 import { appointmentContext } from "../../../Context/AppointmentContext";
+import { Options, OptionsContainer, Row, Title } from "./styles";
 
 const DropDownMenu = ({ doctorId }) => {
   const { setIdSchedule, setScheduleDate, setScheduleHour } =
     useContext(appointmentContext);
 
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [schedule, setSchedule] = useState([]);
-  const [option, setOption] = useState("Escolha uma opção");
-
-  const handleMenu = () => {
-    setMenuIsOpen(menuIsOpen === false ? true : false);
-  };
 
   useEffect(() => {
     apiRoute
@@ -31,41 +23,30 @@ const DropDownMenu = ({ doctorId }) => {
   }, []);
 
   const selectScheduleOption = (id, data, hora) => {
-    setOption(`${data} ${hora}`);
     setIdSchedule(id);
     setScheduleDate(data);
     setScheduleHour(hora);
-    setMenuIsOpen(false);
   };
 
   return (
-    <div className="menu-container">
-      <div className="title" onClick={handleMenu}>
-        <p>{option}</p>
-        <img src={Arrow} alt="arrow icon" />
-      </div>
-      {menuIsOpen === true ? (
-        <div className="menu">
-          <ul className="list">
-            {schedule.map((item) => {
-              return (
-                <li
-                  key={item.id}
-                  onClick={() =>
-                    selectScheduleOption(item.id, item.data, item.hora)
-                  }
-                >
-                  <span>{item.data}</span>
-                  <span>{item.hora}</span>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      ) : (
-        ""
-      )}
-    </div>
+    <>
+      <OptionsContainer>
+        <Title>Escolha uma opção</Title>
+        <Row>
+          {schedule.map((item) => {
+            const { id, data, hora } = item;
+            return (
+              <>
+                <Options
+                  key={id}
+                  onClick={() => selectScheduleOption(id, data, hora)}
+                >{` Dia ${data} as ${hora}`}</Options>
+              </>
+            );
+          })}
+        </Row>
+      </OptionsContainer>
+    </>
   );
 };
 

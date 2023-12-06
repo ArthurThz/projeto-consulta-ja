@@ -19,7 +19,6 @@ const DoctorCard = () => {
 
   const [specialty, setSpecialty] = useState([]);
   const [Doctors, setDoctors] = useState([]);
-  const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
     apiRoute
@@ -71,22 +70,19 @@ const DoctorCard = () => {
     <>
       <Container>
         {Doctors.map((item) => {
+          const { nome_doutor, id } = item;
+          const nomeEspecialidade = specialty.nome_especialidade;
           return (
-            <Card>
-              <h2 className="doctor-name">Dr(a) {item.nome_doutor}</h2>
-              <span className="specialty">{specialty.nome_especialidade}</span>
-              <DropDownMenu doctorId={item.id} />
+            <Card key={id}>
+              <h2 className="doctor-name">Dr(a) {nome_doutor}</h2>
+              <span className="specialty">{nomeEspecialidade}</span>
+              <DropDownMenu doctorId={id} />
               <Button
+                label="Confirmar"
                 onClick={() =>
-                  confirmAppointment(
-                    item.id,
-                    item.nome_doutor,
-                    specialty.nome_especialidade
-                  )
+                  confirmAppointment(id, nome_doutor, nomeEspecialidade)
                 }
-              >
-                Confirmar
-              </Button>
+              />
             </Card>
           );
         })}

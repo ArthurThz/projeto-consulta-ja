@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 import { breakpoints, colors } from "../../../GlobalStyles/styles-variables";
 
 export const Container = styled.main`
-  background-color: ${colors.background};
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -13,12 +12,6 @@ export const Container = styled.main`
   align-items: center;
   justify-content: center;
   gap: 3rem;
-
-  /* @media (min-width: ${breakpoints.lg}) {
-  } */
-
-  /* @media (min-width: ${breakpoints.xl}) {
-  } */
 `;
 
 export const Presentation = styled.div`
@@ -40,17 +33,19 @@ export const Presentation = styled.div`
     h2 {
       color: ${colors.darkBlue};
       font-size: 1.5rem;
+
+      @media (max-width: 400px) {
+        font-size: 1.2rem;
+      }
     }
 
     p {
       font-size: 1rem;
       text-align: justify;
-    }
 
-    button {
-      width: 100%;
-      border-radius: 100px;
-      background-color: ${colors.darkBlue};
+      @media (max-width: 400px) {
+        font-size: 0.9rem;
+      }
     }
   }
   img {
@@ -68,10 +63,6 @@ export const Presentation = styled.div`
       p {
         font-size: 1.2rem;
         letter-spacing: 0.8px;
-      }
-
-      button {
-        width: 200px;
       }
     }
 
@@ -99,11 +90,6 @@ export const Presentation = styled.div`
 
       p {
         font-size: 1rem;
-      }
-
-      button {
-        width: 180px;
-        font-size: 0.9rem;
       }
     }
   }
@@ -163,7 +149,7 @@ export const DataItem = styled.div`
   justify-content: center;
 
   p {
-    font-size: 0.5rem;
+    font-size: 0.4rem;
   }
 
   @media (min-width: ${breakpoints.md}) {
@@ -277,6 +263,9 @@ export const Grid = styled.div`
   row-gap: 1rem;
   column-gap: 1rem;
 
+  @media (max-width: 400px) {
+    grid-template-columns: 2fr;
+  }
   @media (min-width: ${breakpoints.md}) {
     grid-template-columns: 2fr 2fr 2fr;
   }
