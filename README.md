@@ -61,7 +61,7 @@ Descrição: Página em que o usuário poderá fazer o cadastro.
 ![Alt text](src/assets/image/image-2.png)
 <br>
 
-![Alt text](src/assets/image/image-3.png)
+![Alt text](src/assets/image/print-nova-consulta.PNG)
 
 Descrição: A página para marcar consultas é dividida em duas etapas, primeiro escolhemos a especialidade e depois o usuário será redirecionado para a página com os cards dos doutores da especialidade selecionada.
 Cada doutor tem sua própria agenda de horários.
