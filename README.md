@@ -38,7 +38,7 @@ Descrição: Tela inicial do projeto.
 
 # Login Page
 
-![Login Page Image](src/assets/image/print-login.png)
+![Alt text](print-login.PNG)
 
 Descrição: Aréa em que o usuário poderá fazer o login.
 
