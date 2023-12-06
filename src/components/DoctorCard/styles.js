@@ -19,9 +19,9 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-  min-height: 400px;
+  min-height: 500px;
   max-width: 500px;
-  height: 500px;
+  /* height: 500px; */
 
   position: relative;
   border: 1px solid black;
@@ -43,6 +43,10 @@ export const Card = styled.div`
 
   h2 {
     font-size: 1.4rem;
+
+    @media (max-width: 400px) {
+      font-size: 1.2rem;
+    }
   }
 
   &:hover {

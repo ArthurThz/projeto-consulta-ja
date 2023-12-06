@@ -33,11 +33,19 @@ export const Presentation = styled.div`
     h2 {
       color: ${colors.darkBlue};
       font-size: 1.5rem;
+
+      @media (max-width: 400px) {
+        font-size: 1.2rem;
+      }
     }
 
     p {
       font-size: 1rem;
       text-align: justify;
+
+      @media (max-width: 400px) {
+        font-size: 0.9rem;
+      }
     }
   }
   img {
@@ -255,6 +263,9 @@ export const Grid = styled.div`
   row-gap: 1rem;
   column-gap: 1rem;
 
+  @media (max-width: 400px) {
+    grid-template-columns: 2fr;
+  }
   @media (min-width: ${breakpoints.md}) {
     grid-template-columns: 2fr 2fr 2fr;
   }

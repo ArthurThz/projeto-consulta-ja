@@ -38,6 +38,10 @@ export const Options = styled.button`
   font-family: "Poppins", sans-serif;
   color: ${colors.darkBlue};
 
+  @media (max-width: 400px) {
+    font-size: 0.9rem;
+  }
+
   &:focus {
     border: 2px solid ${colors.darkBlue};
   }
