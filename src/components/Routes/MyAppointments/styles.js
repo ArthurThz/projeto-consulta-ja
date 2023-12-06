@@ -93,4 +93,5 @@ export const BtnNewAppointment = styled.button`
 
   background-color: ${colors.darkBlue};
   color: #fff;
+  font-size: 1rem;
 `;

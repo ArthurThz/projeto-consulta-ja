@@ -65,9 +65,8 @@ const MyAppointments = () => {
                   <Button
                     onClick={() => deleteAppointment(id, data, hora)}
                     className="mark-off"
-                  >
-                    Cancelar Agendamento
-                  </Button>
+                    label="Cancelar Agendamento"
+                  />
                 </Group>
               </Card>
             );

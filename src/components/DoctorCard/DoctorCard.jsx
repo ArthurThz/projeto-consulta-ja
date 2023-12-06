@@ -19,7 +19,6 @@ const DoctorCard = () => {
 
   const [specialty, setSpecialty] = useState([]);
   const [Doctors, setDoctors] = useState([]);
-  const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
     apiRoute
@@ -83,9 +82,7 @@ const DoctorCard = () => {
                 onClick={() =>
                   confirmAppointment(id, nome_doutor, nomeEspecialidade)
                 }
-              >
-                Confirmar
-              </Button>
+              />
             </Card>
           );
         })}

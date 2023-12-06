@@ -19,7 +19,9 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-  height: 400px;
+  min-height: 400px;
+  max-width: 500px;
+  height: 500px;
 
   position: relative;
   border: 1px solid black;
