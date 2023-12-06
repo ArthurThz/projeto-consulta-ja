@@ -38,7 +38,7 @@ Descrição: Tela inicial do projeto.
 
 # Login Page
 
-![Alt text](print-login.PNG)
+![Alt text](src/assets/image/print-login.PNG)
 
 Descrição: Aréa em que o usuário poderá fazer o login.
 
@@ -48,7 +48,7 @@ Descrição: Aréa em que o usuário poderá fazer o login.
 
 # Sign up Page
 
-![Alt text](image-1.png)
+![Alt text](src/assets/image/image-1.png)
 
 Descrição: Página em que o usuário poderá fazer o cadastro.
 
@@ -58,9 +58,10 @@ Descrição: Página em que o usuário poderá fazer o cadastro.
 
 # New Appointment Page
 
-![Alt text](image-2.png)
+![Alt text](src/assets/image/image-2.png)
 <br>
-![Alt text](image-3.png)
+
+![Alt text](src/assets/image/image-3.png)
 
 Descrição: A página para marcar consultas é dividida em duas etapas, primeiro escolhemos a especialidade e depois o usuário será redirecionado para a página com os cards dos doutores da especialidade selecionada.
 Cada doutor tem sua própria agenda de horários.
@@ -71,9 +72,10 @@ Cada doutor tem sua própria agenda de horários.
 
 # My Appointments Page
 
-![Alt text](image-4.png)
+![Alt text](src/assets/image/image-4.png)
 <br>
-![Alt text](image-5.png)
+
+![Alt text](src/assets/image/image-5.png)
 
 Descrição: Página onde o usuário pode ver as consultas marcadas.
 
@@ -81,7 +83,7 @@ Descrição: Página onde o usuário pode ver as consultas marcadas.
 
 # Not Allowed
 
-![Alt text](image-6.png)
+![Alt text](src/assets/image/image-6.png)
 
 Descrição: Página que será mostrada caso o usuário tente entrar em alguma rota que necessita estar logado.
 
