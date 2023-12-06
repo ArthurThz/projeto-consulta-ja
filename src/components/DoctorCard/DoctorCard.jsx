@@ -74,7 +74,7 @@ const DoctorCard = () => {
           const { nome_doutor, id } = item;
           const nomeEspecialidade = specialty.nome_especialidade;
           return (
-            <Card>
+            <Card key={id}>
               <h2 className="doctor-name">Dr(a) {nome_doutor}</h2>
               <span className="specialty">{nomeEspecialidade}</span>
               <DropDownMenu doctorId={id} />

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import Button from "../../Layout/Button/button";
 import { Container, Image, Message, Text, Title } from "./styles";
 import unauthorizedImg from "../../../assets/image/unauthorized.svg";
 const NotAllowed = () => {
@@ -14,7 +14,7 @@ const NotAllowed = () => {
         </Text>
         <Image src={unauthorizedImg} alt="not allowed image" />
       </Message>
-      <button onClick={() => navigate("/login")}>Fazer Login</button>
+      <Button label="Fazer Login" onClick={() => navigate("/login")} />
     </Container>
   );
 };

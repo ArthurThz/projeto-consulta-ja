@@ -23,10 +23,11 @@ const DropDownMenu = ({ doctorId }) => {
   }, []);
 
   const selectScheduleOption = (id, data, hora) => {
-    setOption(`${data} ${hora}`);
+    // setOption(`${data} ${hora}`);
     setIdSchedule(id);
     setScheduleDate(data);
     setScheduleHour(hora);
+    console.log(schedule);
     console.log(id, data, hora);
     console.log("Entrou na funcao");
   };
